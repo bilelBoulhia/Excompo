@@ -5,7 +5,7 @@ import { Carousel } from 'primereact/carousel';
 import { StarIcon } from '@chakra-ui/icons'
 // AnotherCarousel.jsx
 import { ProductService } from '@/Services/ProductService';
-import {Avatar,Tag, Box, TagLabel, TagLeftIcon} from "@chakra-ui/react";
+import {Avatar, Tag, Box, TagLabel, TagLeftIcon, Text, Heading} from "@chakra-ui/react";
 
 
 export default function AnotherCarousel() {
@@ -101,7 +101,30 @@ export default function AnotherCarousel() {
             alignContent='center'
             justifyContent='center'
             h='25em' className="card" mt={5} style={{background: 'linear-gradient(109.63deg, #B4A3FF 39.55%, #DEC8FF 96.98%)'}}>
-            <Carousel value={products} numVisible={4} numScroll={3} responsiveOptions={responsiveOptions} itemTemplate={productTemplate}  circular
+            <Box textAlign="center" p='0px 30px 0px 30px'>
+            <Heading  fontSize={{base: 'sm', // 0px
+                sm: '20px', // ~480px. em is a relative unit and is dependant on the font size.
+                md: '25px', // ~768px
+                lg: '20px', // ~992px
+                xl: '20px', // ~1280px
+                '2xl': '20px', // ~1536px
+
+            }}   color='black' fontWeight='medium'>
+                Testimonials
+            </Heading>
+            <Heading   mt={5} fontSize={{base: 'mg', // 0px
+                sm: '22px', // ~480px. em is a relative unit and is dependant on the font size.
+                md: '28px', // ~768px
+                lg: '29px', // ~992px
+                xl: '20px', // ~1280px
+                '2xl': '25px', // ~1536px
+
+            }}  fontWeight='bold' color='black'>
+                What does our customers say?
+            </Heading>
+                
+            </Box>
+            <Carousel style={{marginTop:'40px'}} value={products} numVisible={4} numScroll={3} responsiveOptions={responsiveOptions} itemTemplate={productTemplate}  circular
                      
             />
         </Box>

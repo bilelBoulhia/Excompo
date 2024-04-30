@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react'
 
 import { Divider } from '@chakra-ui/react'
-const Links = [ 'Home', 'Team', 'About Us','Reviews' , 'Contact' ,'Formations']
+const Links = [ 'Home', 'Team', 'About','Reviews' , 'Contact' ,'Formations']
 
 
 
@@ -24,7 +24,7 @@ export default function NavBar() {
         <>
 
             <Box top={0} left={0} right={0} zIndex={1000} alignItems={'center'}>
-                <Flex justifyContent="center"  p={5} color='grey' fontSize='12px' fontWeight='bold'
+                <Flex justifyContent="center"   color='grey' fontSize='12px' fontWeight='bold'
                       alignItems="center">
 
                     <svg width="98" height="74"   viewBox="0 0 98 74" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +58,7 @@ export default function NavBar() {
 
                     <Divider orientation='vertical' borderColor='grey'/>
 
-                    <Flex justifyContent="center" alignItems="center">
+                    <Flex justifyContent="center"  alignItems="center">
                         {Links.map((link, index) => (
                             <ScrollLink
                                 to={link}
@@ -70,12 +70,12 @@ export default function NavBar() {
                             
                             <Link
                                 href={`#${link}`}
-
-                               fontSize={{base: '8px', // 0px
+                                _hover={{ textStyle:'none'}}
+                               fontSize={{base: '9px', // 0px
                                        sm: '12px', // ~480px. em is a relative unit and is dependant on the font size.
                                        md: '15px', // ~768px
-                                       lg: '20px', // ~992px
-                                       xl: '25px', // ~1280px
+                                       lg: '15px', // ~992px
+                                       xl: '15px', // ~1280px
                                        '2xl': '15px', // ~1536px
                                        
                                         }}
@@ -83,7 +83,7 @@ export default function NavBar() {
                                 key={link} alignSelf='center'
 
                                   
-                                  mr={index === Links.length - 1 ? 0 : 5}
+                                  mr={index === Links.length - 1 ? 0 : 4}
 
                                   
                             

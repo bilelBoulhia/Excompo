@@ -42,7 +42,7 @@ export  default  function Footer(){
 
                         <WrapItem>
                             <Avatar
-                                boxSize='1em'
+                                boxSize='1.5em'
                                 name='Kola Tioluwani'
                                 src={twitter}
                             />{' '}
@@ -50,21 +50,21 @@ export  default  function Footer(){
 
                         <WrapItem>
                             <Avatar
-                                boxSize='1em'
+                                boxSize='1.5em'
                                 name='Kola Tioluwani'
                                 src={f}
                             />{' '}
                         </WrapItem>
                         <WrapItem>
                             <Avatar
-                                boxSize='1em'
+                                boxSize='1.5em'
                                 name='Kola Tioluwani'
                                 src={t}
                             />{' '}
                         </WrapItem>
                         <WrapItem>
                             <Avatar
-                                boxSize='1em'
+                                boxSize='1.5em'
                                 name='Kola Tioluwani'
                                 src={i}
                             />{' '}
@@ -109,6 +109,7 @@ export  default  function Footer(){
             </Stack>
 
 
+            <Text textAlign='center' color='black' fontWeight='semibold'>@bilel 2024</Text>
 
 
         </Box>

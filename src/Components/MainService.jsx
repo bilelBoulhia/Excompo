@@ -31,12 +31,30 @@ export default function MainService(){
         <Box>
       
             <Box textAlign="center" p='0px 30px 0px 30px'>
-                <Heading size="md" fontFamily='poppins'  color='#5B278D' fontWeight='semibald'>
-                    Main Service
-                </Heading>
-                <Heading size="lg" fontWeight='semibold' fontFamily='poppins' color='#5B278D'>
-                    Choose your favorite favor
-                </Heading>
+                <Box textAlign="center" p='0px 30px 0px 30px'>
+                    <Heading  fontSize={{base: 'sm', // 0px
+                        sm: '18px', // ~480px. em is a relative unit and is dependant on the font size.
+                        md: '25px', // ~768px
+                        lg: '20px', // ~992px
+                        xl: '20px', // ~1280px
+                        '2xl': '20px', // ~1536px
+
+                    }}   color='#5B278D' fontWeight='normal'>
+                        Main service
+                    </Heading>
+                    <Heading   mt={5} fontSize={{base: 'mg', // 0px
+                        sm: '20px', // ~480px. em is a relative unit and is dependant on the font size.
+                        md: '28px', // ~768px
+                        lg: '29px', // ~992px
+                        xl: '20px', // ~1280px
+                        '2xl': '25px', // ~1536px
+
+                    }}  fontWeight='medium' color='#5B278D'>
+                       Choose your favorite 
+                    </Heading>
+
+
+                </Box>
 
                 <Stack spacing='2em'
                        

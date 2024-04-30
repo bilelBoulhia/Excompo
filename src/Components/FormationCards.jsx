@@ -81,13 +81,16 @@ export  default function FormationCards() {
                                 <Heading textAlign='left' minH='2em' color='#7D35C2'>{card.JobTitle}</Heading>
                                 <Text textAlign='left' mt='2'>Et blandit non sit ac egestas risus non.</Text>
                                 <HStack mt='2' mb='3em'>
-                                    <Button w='13em' borderRadius='17px' bg='black' color='white'>Free</Button>
+                                    <Button w='13em' borderRadius='17px' isDisabled bg='black' color='white'>Free</Button>
                                     <Button w='13em' borderRadius='17px' bg='#3CAC2A' color='white'>Inscrier</Button>
                                 </HStack>
                             </CardBody>
                         </Card>
                     ))}
+
+               
                 </Grid>
+                <Button mt={5} w='10em'  borderRadius='17px' bg='#3CAC2A' color='white'>see more</Button>
             </Box>
         </Box>
         

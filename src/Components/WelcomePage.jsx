@@ -38,14 +38,14 @@ export  default  function WelcomePage(){
                                  md: '48px', // ~768px
                                  lg: '58px', // ~992px
                                  xl: '68px', // ~1280px
-                                 '2xl': '78px', // ~1536px
+                                 '2xl': '85px', // ~1536px
 
                              }}
                    
                    
                    
                     >
-                        The of Ideas !
+                        E-Comexpo
 
                     </Heading>
 
@@ -63,10 +63,9 @@ export  default  function WelcomePage(){
                     
                     
                     >
-                        Welcome to the official website of House of Idea,
-                        where passion meets discovery. As a leading scientific club at Economic University ,
-                        we are dedicated to fostering curiosity, collaboration, and innovation in the
-                        field of [Your Scientific Field].
+                        Welcome to E-Comexpo, your go-to destination for courses that cater to students, professionals, and lifelong learners alike. With our diverse selection of offerings, you can explore new interests, develop valuable skills, and achieve your learning goals
+                    
+                    
                     </Text>
 
                    

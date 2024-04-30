@@ -36,7 +36,7 @@ export default function RadialMenu() {
 
         ]
 
-    const [selectedArray, setSelectedArray] = useState(TEST);
+    const [selectedArray, setSelectedArray] = useState(REManager);
     
     const handleClick = (arrayName) => {
         let selectedArr;

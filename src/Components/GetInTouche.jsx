@@ -1,4 +1,4 @@
-﻿import {Box, Button, Flex, Heading, HStack, Image, Input, Stack, Text} from "@chakra-ui/react";
+﻿import {Box, Button, Flex, Heading, HStack, Image, Input, Stack, Text, Textarea} from "@chakra-ui/react";
 import {Icon} from "@chakra-ui/icons";
 
 import {useRef, useState} from "react";
@@ -43,7 +43,7 @@ export  default function GetInTouch() {
                     '2xl': '25px', // ~1536px
 
                 }}  fontWeight='bold' color='black'>
-                    Join Our Work Shop
+                    Leave a review
                 </Heading>
             
 
@@ -53,7 +53,7 @@ export  default function GetInTouch() {
             <Stack       maxW='30em'>
                 <Text
 
-              
+                    p={3}
                     mt='5em'
                      
                     textAlign= 'center'
@@ -67,17 +67,20 @@ export  default function GetInTouch() {
 
                     }}   color='#3B5266'
                 >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis nisl,
-                    elementum elit arcu amet nec non eget felis. Eu ut cursus luctus nunc.
+                  Want to tell your experience ? let us imporove our work by leave a raview :) thank you.
                 </Text>
 
 
 
-                <HStack mt={5} mb='4em'direction={['column','row', 'row', 'row']}>
-                    <Input placeholder='Your Email' />
-                    <Button borderRadius='20' w='10em' bg='black' color='white' >Subscribe</Button>
+                <Stack mt={5} p='5' mb='4em' alignItems='center'>
+                    <Input placeholder='Your Name' />
+                    <Textarea   
+                                resize="vertical"
+                                rows={8}
+                                placeholder='Your Review' />
+                    <Button borderRadius='20' w='10em' bg='black' color='white' >Submit</Button>
 
-                </HStack>
+                </Stack>
                 
                 
             </Stack>
