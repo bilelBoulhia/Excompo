@@ -12,20 +12,29 @@
     Stack,
     Text
 } from "@chakra-ui/react";
+import React, {useState} from 'react';
+import {
+
+    CardFooter,
+
+} from '@chakra-ui/react';
 import balddude from '@/assets/balddude.png'
 import beardude from '@/assets/breaddude.png'
 import woman from '@/assets/woman.png'
+import ApplicationModal from "@/Components/ApplicationModal.jsx";
 export  default function FormationCards() {
     
    const FCard = [
 
        {
+          Event:'drama',
            JobTitle: 'PROJECT MANAGEMENT',
            img: woman,
            name:'Maya Ait Aissi'
            
        },
        {
+           Event:'acting',
            JobTitle: 'PUBLIC SPEAKING',
            img: beardude,
            name:'Toufik KOURtAA'
@@ -33,6 +42,7 @@ export  default function FormationCards() {
        },
 
        {
+          Event:'Dancing',
             JobTitle: 'MARKETING DIGITAL',
            img: balddude, 
            name:'Youcef Boukhalfa'
@@ -40,8 +50,11 @@ export  default function FormationCards() {
        }
         
     ]
-    
-    
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
     return(
 
 
@@ -59,37 +72,83 @@ export  default function FormationCards() {
                     Our Workshop
                 </Heading>
 
-                <Grid
-                    templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }}
-                    gap={6}
-                    justifyContent="center"
+                <Stack
+                    direction={['column','column', 'column', 'row']}
+
+                    spacing='9em'
+                    align="center"
                     mt='5em'
                 >
                     {FCard.map((card, index) => (
-                        <Card key={index} borderRadius='25px' maxh='em'>
-                            <CardHeader bg='#EAE1F3' mt='0' borderRadius='25px 25px 0 0'>
-                                <Flex spacing="2">
-                                    <Flex flex="1" alignItems="center" flexWrap="wrap">
-                                        <Box bg='#DEC8FF' borderRadius='5px' maxW='14em' py={5} px={5}>
-                                            <Heading fontWeight='semibold' color='#7D35C2' fontFamily='arial' fontSize='2xl'>{card.JobTitle}</Heading>
-                                        </Box>
-                                        <Image src={card.img} objectFit='contain'></Image>
-                                    </Flex>
+                        <Card  w={{base: '20em', // 0px
+                            sm: '23em', // ~480px. em is a relative unit and is dependant on the font size.
+                            md: '22em', // ~768px
+                            lg: '28em', // ~992px
+                            xl: '28em', // ~1280px
+                            '2xl': '26em', // ~1536px//
+                             }}
+                            borderRadius="20px" borderWidth="1px"  alignContent='center'   borderColor="gray.300">
+                            <Box
+                               
+                                
+                                bgColor="#eae1f3"  borderTopRadius="20px" h="273px" position="relative">
+                                <Image
+                                    src={card.img}
+                                    alt="Project Image"
+                                    boxSize="250px"
+                                    position="absolute"
+                                    top="2em"
+                                    w='100%'
+                                />
+                                <Flex
+                                    bgColor="#DEC8FF"
+                                    borderRadius="10px"
+                                    position="absolute"
+                                    top="21px"
+                                    left="15px"
+                                    alignItems="center"
+                                    justifyContent="center"
+                                    px="3"
+                                    py="5"
+                                >
+                                    <Heading
+                                        as="h3"
+                                        
+                                        size="sm"
+                                        fontWeight="bold"
+                                        textTransform="uppercase"
+                                        color="#7D35C2"
+                                        letterSpacing="-0.01em"
+                                    >
+                                        {card.JobTitle}
+                                    </Heading>
                                 </Flex>
-                            </CardHeader>
+                              
+                            </Box>
                             <CardBody>
-                                <Heading textAlign='left' minH='2em' color='#7D35C2'>{card.JobTitle}</Heading>
-                                <Text textAlign='left' mt='2'>Et blandit non sit ac egestas risus non.</Text>
-                                <HStack mt='2' mb='3em'>
-                                    <Button w='13em' borderRadius='17px' isDisabled bg='black' color='white'>Free</Button>
-                                    <Button w='13em' borderRadius='17px' bg='#3CAC2A' color='white'>Inscrier</Button>
-                                </HStack>
+                                <Stack spacing="4" textAlign='left'>
+                                    <Heading size="md" fontWeight="bold" textTransform="uppercase" color="purple.600">
+                                       {card.Event}
+                                    </Heading>
+                                    <Text fontSize="sm" color="gray.600">
+                                        Et blandit non sit ac egestas risus non.
+                                    </Text>
+                                </Stack>
                             </CardBody>
+                            <CardFooter justifyContent="space-between"  px="8" py="4">
+                                <Button w='50%' borderRadius='17px' mr={5} bg='black' color='white'>Free</Button>
+                                <Button w='50%' borderRadius='17px' bg='#3CAC2A' color='white' onClick={openModal}>Inscrier</Button>
+                                <ApplicationModal
+                                    isOpen={isModalOpen}
+                                    onClose={closeModal}
+                                    Formation={card.Event}
+                                />
+                            </CardFooter>
                         </Card>
                     ))}
 
                
-                </Grid>
+                </Stack>
                 <Button mt={5} w='10em'  borderRadius='17px' bg='#3CAC2A' color='white'>see more</Button>
             </Box>
         </Box>
@@ -102,3 +161,5 @@ export  default function FormationCards() {
     
     
 }
+
+

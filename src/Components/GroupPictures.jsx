@@ -5,8 +5,8 @@ import gp3 from '@/assets/gp3.jpg';
 import gp4 from '@/assets/gp4.jpg';
 
 export default  function GroupPictures(){
-    const numImages = 4; // Assuming 4 images
-    const maxWidth = 1450; // Maximum width of the website
+    const numImages = 3; // Assuming 4 images
+    const maxWidth = 1150; // Maximum width of the website
     const imageWidth = `${maxWidth / numImages}px`;
     const images =[
     {i: gp1} , {i: gp2},{i: gp3},{i: gp4}
@@ -29,7 +29,7 @@ export default  function GroupPictures(){
                     src={image.i}
                     boxSize="365px" 
                     objectFit="cover"
-                    width={imageWidth}// Let images adjust their width according to container
+                    width={imageWidth}
                 
      
                 />

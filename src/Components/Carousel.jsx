@@ -26,13 +26,12 @@ export default function Carousel() {
 
     const [slider, setSlider] = React.useState();
 
-    // These are the breakpoints which changes the position of the
-    // buttons as the screen size changes
+ 
     const top = useBreakpointValue({ base: '90%', md: '50%' });
     const side = useBreakpointValue({ base: '30%', md: '10px' });
 
     const carouselHeight = useBreakpointValue({ base: '200px', md: '400px', lg: '720px' });
-    // These are the images used in the slide
+
     const cards = [
         {text:'E-Comexpo Event' ,image : bg1},
         {text:'test' ,image: mr}
@@ -45,8 +44,10 @@ export default function Carousel() {
             position={'relative'}
          
             width={'full'}
-            
-           
+
+            style={{
+                background: 'linear-gradient(109.63deg, #B4A3FF 39.55%, #DEC8FF 96.98%)'
+            }}
             
            >
           
@@ -65,6 +66,7 @@ export default function Carousel() {
             <ChevronLeftIcon
                 aria-label="left-arrow"
 
+                bg='white'
                 borderRadius="full"
                 position="absolute"
                 left={side}
@@ -77,7 +79,7 @@ export default function Carousel() {
 
             <ChevronRightIcon
                 aria-label="right-arrow"
-
+                bg='white'
                 borderRadius="full"
                 position="absolute"
                 right={side}
@@ -92,17 +94,21 @@ export default function Carousel() {
                 {cards.map((cards, index) => (
                     <Box
                         key={index}
-                        height='2xl'
-
+                        maxH='2xl'
+                        minH='md'
+                       
+                       
                         position="relative"
-
-
                         backgroundRepeat="no-repeat"
                         backgroundSize="cover"
-                        backgroundImage={cards.image}                    >
+                        backgroundPosition="center"
+
+                        
+                        backgroundImage={cards.image}
 
 
-                      
+
+                    >
 
                     </Box>
 

@@ -18,7 +18,7 @@ export  default function LandingPage(){
     return(
 
         <>
-            <Stack spacing='1px'>
+            <Stack spacing='0px'>
 
                 <motion.div
                     initial={{y: -100, opacity: 0}}
@@ -49,14 +49,7 @@ export  default function LandingPage(){
                 >
                     <Carousel/>
                 </motion.div>
-                <motion.div
-                    initial={{x: 100, opacity: 0}}
-
-                    animate={{x: 0, opacity: 1}}
-                    transition={{duration: 0.8, delay: 0.4}}
-                >
-                    <VisitUs/>
-                </motion.div>
+           
 
 
                 <motion.div

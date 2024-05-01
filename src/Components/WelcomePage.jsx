@@ -9,8 +9,8 @@ export  default  function WelcomePage(){
         <Box bg='#EAE1F3' >
 
 
-            <Stack direction={['column','column', 'column', 'row']} align="center" justify="center" mt={1}>
-                <Box   p='5em' maxW='40em'>
+            <Stack direction={['column','column', 'column', 'row']} align="center" justify="center" mt={1} pb='7em'>
+                <Box   p='3em' maxW='50em'>
 
                     <Heading 
 
@@ -45,7 +45,7 @@ export  default  function WelcomePage(){
                    
                    
                     >
-                        E-Comexpo
+                        House of Ideas
 
                     </Heading>
 
@@ -63,7 +63,7 @@ export  default  function WelcomePage(){
                     
                     
                     >
-                        Welcome to E-Comexpo, your go-to destination for courses that cater to students, professionals, and lifelong learners alike. With our diverse selection of offerings, you can explore new interests, develop valuable skills, and achieve your learning goals
+                        Welcome to House of ideas, your go-to destination for courses that cater to students, professionals, and lifelong learners alike. With our diverse selection of offerings, you can explore new interests, develop valuable skills, and achieve your learning goals
                     
                     
                     </Text>
