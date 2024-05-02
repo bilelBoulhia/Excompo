@@ -6,7 +6,7 @@ export  default  function WelcomePage(){
     // size='3xl'
     
     return(
-        <Box bg='#EAE1F3' >
+        <Box style={{background: 'linear-gradient(109.63deg, #B4A3FF 39.55%, #DEC8FF 96.98%)'}} >
 
 
             <Stack direction={['column','column', 'column', 'row']} align="center" justify="center" mt={1} pb='7em'>
@@ -59,9 +59,9 @@ export  default  function WelcomePage(){
                               '2xl': '20px', // ~1536px
 
                           }}
-                    
-                    
-                    
+
+
+                          color='#353238'
                     >
                         Welcome to House of ideas, your go-to destination for courses that cater to students, professionals, and lifelong learners alike. With our diverse selection of offerings, you can explore new interests, develop valuable skills, and achieve your learning goals
                     

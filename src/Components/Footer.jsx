@@ -38,9 +38,10 @@ const SocialButton = ({ children, label, href }) => {
 
 const Footer = () => {
     return (
+        //  //   bg='#EAE1F3'
         <Box
-            bg='#EAE1F3'
-           
+
+            style={{background: 'linear-gradient(109.63deg, #B4A3FF 39.55%, #DEC8FF 96.98%)'}}
             color={useColorModeValue('gray.700', 'gray.200')}>
             <Container
                 as={Stack}
@@ -80,9 +81,8 @@ const Footer = () => {
             </Container>
 
             <Box
-                borderTopWidth={1}
-                borderStyle={'solid'}
-                borderColor={useColorModeValue('gray.200', 'gray.700')}>
+               
+>
                 <Container
                     as={Stack}
                     maxW={'6xl'}

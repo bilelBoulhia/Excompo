@@ -6,7 +6,7 @@ import gp4 from '@/assets/gp4.jpg';
 
 export default  function GroupPictures(){
     const numImages = 3; // Assuming 4 images
-    const maxWidth = 1150; // Maximum width of the website
+    const maxWidth = 1139; // Maximum width of the website
     const imageWidth = `${maxWidth / numImages}px`;
     const images =[
     {i: gp1} , {i: gp2},{i: gp3},{i: gp4}

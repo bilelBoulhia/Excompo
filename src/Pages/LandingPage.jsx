@@ -41,7 +41,7 @@ export  default function LandingPage(){
 
 
                 <motion.div
-                    id="Team"
+                    id="About Us"
                     initial={{x: 100, opacity: 0}}
 
                     animate={{x: 0, opacity: 1}}
@@ -63,7 +63,8 @@ export  default function LandingPage(){
                 </motion.div>
 
                 <motion.div
-                    id="About Us"
+                
+                    id="Team"
                     initial={{x: 100, opacity: 0}}
 
                     animate={{x: 0, opacity: 1}}
@@ -107,6 +108,8 @@ export  default function LandingPage(){
                     <GroupPictures/>
                 </motion.div>
                 <motion.div
+                    
+                    id="Contact"
                     initial={{x: 100, opacity: 0}}
 
                     animate={{x: 0, opacity: 1}}

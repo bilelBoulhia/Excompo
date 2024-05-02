@@ -39,7 +39,7 @@ export default function MainService(){
                         xl: '20px', // ~1280px
                         '2xl': '20px', // ~1536px
 
-                    }}   color='#5B278D' fontWeight='normal'>
+                    }}   color='black' fontWeight='normal'>
                         Main service
                     </Heading>
                     <Heading   mt={5} fontSize={{base: 'mg', // 0px
@@ -49,55 +49,55 @@ export default function MainService(){
                         xl: '20px', // ~1280px
                         '2xl': '25px', // ~1536px
 
-                    }}  fontWeight='medium' color='#5B278D'>
+                    }}  fontWeight='medium' color='black'>
                        Choose your favorite 
                     </Heading>
 
 
                 </Box>
 
-                <Stack spacing='2em'
-                       
-                       
-                       
-                       
-                       direction={['column','column', 'column', 'row']} align="center" justify="center" mt={10}>
-
-                    {data.map((d ,index)=>(
-
-
-                        <Box     key={index} textAlign='center'  display="flex" flexDirection="column" alignItems="center">
-                            <Box
-                                
-                                textAlign='center'
-                                rounded="full"
-                                borderWidth={1}
-                               
-                               
-                             
-                                borderColor="#5B278D"
-                                width={{ base: '40px', md: '80px' }}
-                                height={{ base: '40px', md: '80px' }}
-                            >
-                                <Image
-                                    src={d.img}
-                                    boxSize={{ base: '40px', md: '80px' }}
-                                    objectFit="cover"
-                                    rounded="full"
-                                />
-                            </Box>
-
-                            <Text color='#7D35C2'  >{d.des}</Text>
-
-                        </Box>
-                      
-                        
-                    
-                    
-                    ))}
-                    
-                    
-                </Stack>
+                {/*<Stack spacing='2em'*/}
+                {/*       */}
+                {/*       */}
+                {/*       */}
+                {/*       */}
+                {/*       direction={['column','column', 'column', 'row']} align="center" justify="center" mt={10}>*/}
+                
+                {/*    {data.map((d ,index)=>(*/}
+                
+                
+                {/*        <Box     key={index} textAlign='center'  display="flex" flexDirection="column" alignItems="center">*/}
+                {/*            <Box*/}
+                {/*                */}
+                {/*                textAlign='center'*/}
+                {/*                rounded="full"*/}
+                {/*                borderWidth={1}*/}
+                {/*               */}
+                {/*               */}
+                {/*             */}
+                {/*                borderColor="#5B278D"*/}
+                {/*                width={{ base: '40px', md: '80px' }}*/}
+                {/*                height={{ base: '40px', md: '80px' }}*/}
+                {/*            >*/}
+                {/*                <Image*/}
+                {/*                    src={d.img}*/}
+                {/*                    boxSize={{ base: '40px', md: '80px' }}*/}
+                {/*                    objectFit="cover"*/}
+                {/*                    rounded="full"*/}
+                {/*                />*/}
+                {/*            </Box>*/}
+                
+                {/*            <Text color='#7D35C2'  >{d.des}</Text>*/}
+                
+                {/*        </Box>*/}
+                {/*      */}
+                {/*        */}
+                {/*    */}
+                {/*    */}
+                {/*    ))}*/}
+                {/*    */}
+                {/*    */}
+                {/*</Stack>*/}
 
 
                

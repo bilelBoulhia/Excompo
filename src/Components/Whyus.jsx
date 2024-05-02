@@ -10,7 +10,7 @@ export  default function Whyus() {
 
        
     return(
-        <Stack  bg="#EAE1F3"   justifyContent="center"
+        <Stack style={{background: 'linear-gradient(109.63deg, #B4A3FF 39.55%, #DEC8FF 96.98%)'}}  justifyContent="center"
                  alignItems="center"  mt={10}>
 
             <Box textAlign="center" p='0px 30px 0px 30px'>
@@ -21,7 +21,7 @@ export  default function Whyus() {
                     xl: '20px', // ~1280px
                     '2xl': '20px', // ~1536px
 
-                }}   color='black' fontWeight='medium'>
+                }}   color='#353238' fontWeight='medium'>
                     The reasons
                 </Heading>
                 <Heading   mt={5} fontSize={{base: 'mg', // 0px
@@ -31,7 +31,7 @@ export  default function Whyus() {
                     xl: '20px', // ~1280px
                     '2xl': '25px', // ~1536px
 
-                }}  fontWeight='bold' color='black'>
+                }}  fontWeight='bold' color='#353238'>
                   Why choose us ?
                 </Heading>
      

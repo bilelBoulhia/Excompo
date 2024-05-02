@@ -100,7 +100,7 @@ export default function AnotherCarousel() {
            p={2}
             alignContent='center'
             justifyContent='center'
-            h='25em' className="card" mt={5} style={{background: 'linear-gradient(109.63deg, #B4A3FF 39.55%, #DEC8FF 96.98%)'}}>
+            h='25em' className="card"  style={{background: 'linear-gradient(109.63deg, #B4A3FF 39.55%, #DEC8FF 96.98%)'}}>
             <Box textAlign="center" p='0px 30px 0px 30px'>
             <Heading  fontSize={{base: 'sm', // 0px
                 sm: '20px', // ~480px. em is a relative unit and is dependant on the font size.
@@ -109,7 +109,7 @@ export default function AnotherCarousel() {
                 xl: '20px', // ~1280px
                 '2xl': '20px', // ~1536px
 
-            }}   color='black' fontWeight='medium'>
+            }}   color='#353238' fontWeight='medium'>
                 Testimonials
             </Heading>
             <Heading   mt={5} fontSize={{base: 'mg', // 0px
@@ -119,7 +119,7 @@ export default function AnotherCarousel() {
                 xl: '20px', // ~1280px
                 '2xl': '25px', // ~1536px
 
-            }}  fontWeight='bold' color='black'>
+            }}  fontWeight='bold' color='#353238'>
                 What does our customers say?
             </Heading>
                 
