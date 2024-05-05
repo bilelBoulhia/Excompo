@@ -23,6 +23,7 @@ const ApplicationModal = ({ isOpen, onClose ,FormationId }) => {
     const {
         handleSubmit,
         register,
+        reset,
         formState: { errors },
     } = useForm();
 
@@ -38,7 +39,7 @@ const ApplicationModal = ({ isOpen, onClose ,FormationId }) => {
             AssoEvent: FormationId,
         };
 
-
+console.log('dasd',data)
         if(await useInsertApplicants(data)===true){
 
             toast({
@@ -48,17 +49,18 @@ const ApplicationModal = ({ isOpen, onClose ,FormationId }) => {
                 isClosable: true,
             });
 
+            
         }
-        
-        
+
+        reset();
         onClose();
       
     };
 
     return (
         <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
-            <ModalContent>
+            <ModalOverlay bg="none" backdropFilter="auto" backdropBlur="0.5px" boxShadow='none' />
+            <ModalContent sx={{ boxShadow: 'none' }}>
                 <ModalHeader>Apply Now</ModalHeader>
                 <ModalCloseButton />
                 <form onSubmit={handleSubmit(onSubmit)}>
