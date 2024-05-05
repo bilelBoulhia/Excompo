@@ -3,6 +3,7 @@ import {motion} from "framer-motion";
 import CreateEvent from "@/Admin_Components/CreateEvent.jsx";
 import NavBar from "@/Admin_Components/NavBar.jsx";
 import DarkLightTheme from "@/Theme/DarkLightTheme.jsx";
+import EventsTable from "@/Admin_Components/EventsTable.jsx";
 
 export default function EventManagement() {
 
@@ -33,9 +34,8 @@ export default function EventManagement() {
 
 
                 <Tabs variant='enclosed'>
-                    <TabList bgGradient="linear(70deg, #7450CD 0%, #A590E8 1%, #67BBD4 60%, #6CC3CC 100%)"   >
+                    <TabList    >
                         <Tab borderRadius='1px'>Create</Tab>
-                        <Tab borderRadius='1px'>Enable/Disble</Tab>
                         <Tab borderRadius='1px'>Data Table</Tab>
                     </TabList>
                     <TabPanels>
@@ -43,7 +43,7 @@ export default function EventManagement() {
                             <CreateEvent/>
                         </TabPanel>
                         <TabPanel>
-                            <p>two!</p>
+                            <EventsTable></EventsTable>
                         </TabPanel>
                     </TabPanels>
                 </Tabs>

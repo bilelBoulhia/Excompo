@@ -13,9 +13,11 @@ import {
     Input,
     FormErrorMessage,
 } from '@chakra-ui/react';
-import { useForm } from 'react-hook-form';
+import {useForm, useFormState} from 'react-hook-form';
 import { useToast } from '@chakra-ui/react'
-const ApplicationModal = ({ isOpen, onClose ,Formation }) => {
+import {useInsertEvent} from "@/Effect Hooks/useInsertEvent.jsx";
+import {useInsertApplicants} from "@/Effect Hooks/useInsertApplicants.jsx";
+const ApplicationModal = ({ isOpen, onClose ,FormationId }) => {
     const initialRef = React.useRef(null);
     const toast = useToast()
     const {
@@ -24,18 +26,30 @@ const ApplicationModal = ({ isOpen, onClose ,Formation }) => {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (data) => {
-       
-        console.log(data);
+    const onSubmit = async () => {
+
+
+
+        const data = {
+            Email: event.target.email.value,
+            Nom: event.target.name.value,
+            Prenom: event.target.lastName.value,
+            NumeroPhone: event.target.phone.value,
+            AssoEvent: FormationId,
+        };
+
+
+        if(await useInsertApplicants(data)===true){
+
+            toast({
+                title: 'Form submitted successfully',
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+            });
+
+        }
         
-    
-        toast({
-            title: 'Submitted',
-            description: "We will contact you soon",
-            status: 'success',
-            duration: 2000,
-            isClosable: true,
-        })
         
         onClose();
       
@@ -53,6 +67,7 @@ const ApplicationModal = ({ isOpen, onClose ,Formation }) => {
                             <FormLabel htmlFor="email">Email</FormLabel>
                             <Input
                                 id="email"
+                                name="email"
                                 type="email"
                                 {...register('email', {
                                     required: 'Email is required',
@@ -68,6 +83,7 @@ const ApplicationModal = ({ isOpen, onClose ,Formation }) => {
                             <FormLabel htmlFor="name">First Name</FormLabel>
                             <Input
                                 id="name"
+                                name="name"
                                 {...register('name', { required: 'First name is required' })}
                             />
                             <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
@@ -76,6 +92,7 @@ const ApplicationModal = ({ isOpen, onClose ,Formation }) => {
                             <FormLabel htmlFor="lastName">Last Name</FormLabel>
                             <Input
                                 id="lastName"
+                                name="lastName"
                                 {...register('lastName', { required: 'Last name is required' })}
                             />
                             <FormErrorMessage>{errors.lastName?.message}</FormErrorMessage>
@@ -84,6 +101,7 @@ const ApplicationModal = ({ isOpen, onClose ,Formation }) => {
                             <FormLabel htmlFor="phone">Phone Number</FormLabel>
                             <Input
                                 id="phone"
+                                name="phone"
                                 type="tel"
                                 {...register('phone', {
                                     required: 'Phone number is required',
@@ -97,7 +115,7 @@ const ApplicationModal = ({ isOpen, onClose ,Formation }) => {
                         </FormControl>
                     </ModalBody>
                     <ModalFooter>
-                        <Button type="submit" color='white' bg='#3CAC2A' mr={3}>
+                        <Button type="submit"  color='white' bg='#3CAC2A' mr={3}>
                             Apply
                         </Button>
                         <Button onClick={onClose}>Cancel</Button>

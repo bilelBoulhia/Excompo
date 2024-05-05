@@ -14,9 +14,10 @@ import {
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import {useInsertEvent} from "@/Effect Hooks/useInsertEvent.jsx";
 
 const validationSchema = Yup.object().shape({
-    name: Yup.string().required('Name is required'),
+    name: Yup.string().required('Tutor Name is required'),
     role: Yup.string().required('Role is required'),
     Event: Yup.string().required('Event is required'),
     Description: Yup.string().max(50,'maximum description size must be les than 50 chars').required('Description is required'),
@@ -35,16 +36,42 @@ const CreateEvent = () => {
             Description: '',
             image: null,
         },
+        
         validationSchema,
-        onSubmit: (values) => {
-            // Handle form submission here
-            console.log(values);
-            toast({
-                title: 'Form submitted successfully',
-                status: 'success',
-                duration: 3000,
-                isClosable: true,
+        onSubmit: async (values) => {
+            const base64Image = await new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = () => reject(reader.error);
+                reader.readAsDataURL(values.image);
             });
+
+            const data = {
+                EventName: values.Event,
+                formationDes: values.Description,
+                formationTutImage: base64Image,
+                formationTutPosition: values.role,
+                tutorname: values.name
+            };
+
+     
+            if(await useInsertEvent(data)===true){
+
+                toast({
+                    title: 'Form submitted successfully',
+                    status: 'success',
+                    duration: 3000,
+                    isClosable: true,
+                });
+                
+            }
+               
+                
+            
+           
+            console.log(data);
+            formik.resetForm();
+            setImagePreview(null);
         },
     });
 
@@ -56,7 +83,7 @@ const CreateEvent = () => {
 
     const {colorMode} = useColorMode();
     return (
-        <Box   maxW="lg" mx="auto" mt={8} py={5} px={5} borderRadius='25px'  >
+        <Box position='absolute' left='0'  maxW="lg" mx="auto" mt={0} py={5} px={5} borderRadius='25px'  >
             <Heading mb={6}>Create An Event</Heading>
             <form onSubmit={formik.handleSubmit}>
                 <FormControl isInvalid={formik.errors.name && formik.touched.name} mb={4}>
@@ -72,48 +99,48 @@ const CreateEvent = () => {
                     />
                     <FormErrorMessage>{formik.errors.name}</FormErrorMessage>
                 </FormControl>
+          
 
-                <FormControl isInvalid={formik.errors.Event && formik.touched.Event} mb={4}>
-                    <FormLabel htmlFor="email">Event</FormLabel>
-  
-                
-                        <Input
-                            id="event"
-                            name="event"
-                            type="text"
-                            _hover={{borderColor:'purple' }}
-                            _focus={{borderColor:'purple' }}
-                            value={formik.values.email}
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                        />
+                <FormControl isInvalid={formik.errors.Event} mb={4}>
+                    <FormLabel htmlFor="event">Event</FormLabel>
+
+
+                    <Input
+                        id="Event"
+                        name="Event"
+                        type="text"
+                        _hover={{ borderColor: 'purple' }}
+                        _focus={{ borderColor: 'purple' }}
+                        value={formik.values.Event}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                    />
              
                     <FormErrorMessage>{formik.errors.Event}</FormErrorMessage>
                 </FormControl>
 
-                <FormControl isInvalid={formik.errors.role && formik.touched.role} mb={4}>
+                <FormControl isInvalid={formik.errors.role} mb={4}>
                     <FormLabel htmlFor="Role">Role</FormLabel>
                     <Input
-                        id="Role"
-                        name="Role"
+                        id="role"
+                        name="role"
                         type="text"
-                        
-                        value={formik.values.password}
+                        value={formik.values.role}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        _hover={{borderColor:'purple' }}
-                        _focus={{borderColor:'purple' }}
+                        _hover={{ borderColor: 'purple' }}
+                        _focus={{ borderColor: 'purple' }}
                     />
                     <FormErrorMessage>{formik.errors.role}</FormErrorMessage>
                 </FormControl>
                 <FormControl isInvalid={formik.errors.Description && formik.touched.Description} mb={4}>
-                    <FormLabel htmlFor="Role"> Description</FormLabel>
+                    <FormLabel htmlFor="Description"> Description</FormLabel>
                     <Textarea
                         id="Description"
                         name="Description"
                         type="text"
 
-                        value={formik.values.password}
+                        value={formik.values.Description}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         _hover={{borderColor:'purple' }}

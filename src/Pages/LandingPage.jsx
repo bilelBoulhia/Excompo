@@ -11,6 +11,7 @@ import AnotherCarousel from "@/Components/AnotherCarousel.jsx";
 import GetInTouch from "@/Components/GetInTouche.jsx";
 import GroupPictures from "@/Components/GroupPictures.jsx";
 import Footer from "@/Components/Footer.jsx";
+import EventsCarousel from "@/Components/EventsCarousel.jsx";
 export  default function LandingPage(){
     
     
@@ -49,21 +50,29 @@ export  default function LandingPage(){
                 >
                     <Carousel/>
                 </motion.div>
-           
 
 
+                {/*<motion.div*/}
+                {/*    id="Formations"*/}
+                {/*    initial={{x: 100, opacity: 0}}*/}
+                
+                {/*    animate={{x: 0, opacity: 1}}*/}
+                {/*    transition={{duration: 0.8, delay: 0.4}}*/}
+                {/*>*/}
+                {/*    <FormationCards/>*/}
+                {/*</motion.div>*/}
                 <motion.div
                     id="Formations"
                     initial={{x: 100, opacity: 0}}
-
+                
                     animate={{x: 0, opacity: 1}}
                     transition={{duration: 0.8, delay: 0.4}}
                 >
-                    <FormationCards/>
+                    <EventsCarousel/>
                 </motion.div>
 
                 <motion.div
-                
+
                     id="Team"
                     initial={{x: 100, opacity: 0}}
 
@@ -108,7 +117,7 @@ export  default function LandingPage(){
                     <GroupPictures/>
                 </motion.div>
                 <motion.div
-                    
+
                     id="Contact"
                     initial={{x: 100, opacity: 0}}
 

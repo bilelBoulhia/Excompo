@@ -1,8 +1,9 @@
-﻿import {Stack, Tab, TabList, TabPanel, TabPanels, Tabs} from "@chakra-ui/react";
+﻿import {Card, CardBody, Stack, Tab, TabList, TabPanel, TabPanels, Tabs} from "@chakra-ui/react";
 import {motion} from "framer-motion";
 import CreateEvent from "@/Admin_Components/CreateEvent.jsx";
 import NavBar from "@/Admin_Components/NavBar.jsx";
 import DarkLightTheme from "@/Theme/DarkLightTheme.jsx";
+import ApplicantsTable from "@/Admin_Components/ApplicantsTable.jsx";
 
 
 export default function SubmissionManagement() {
@@ -14,10 +15,14 @@ export default function SubmissionManagement() {
 
         <>
 
-                <NavBar></NavBar>
-           
-                <DarkLightTheme/>
+            <Card borderRadius='0px'>
+                <CardBody>
+                    <NavBar></NavBar>
 
+                    <DarkLightTheme/>
+                </CardBody>
+
+            </Card>
 
 
             <Stack>
@@ -25,15 +30,15 @@ export default function SubmissionManagement() {
 
                 <Tabs variant='enclosed'>
                     <TabList>
-                        <Tab>One</Tab>
-                        <Tab>Two</Tab>
+                        <Tab>Submission List</Tab>
+                        <Tab>/</Tab>
                     </TabList>
                     <TabPanels>
                         <TabPanel>
-                           sadasdasdasd
+                           <ApplicantsTable/>
                         </TabPanel>
                         <TabPanel>
-                            <p>two!</p>
+                            nothing to show here yet
                         </TabPanel>
                     </TabPanels>
                 </Tabs>
