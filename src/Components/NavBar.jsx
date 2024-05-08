@@ -2,33 +2,45 @@
 import { Link } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
-
 import {
     Box,
     Flex,
-
+    IconButton,
     useDisclosure,
     useColorModeValue,
-    Stack, Text,
+    Stack,
+    Text,
+    Drawer,
+    DrawerBody,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
+    DrawerContent,
+    DrawerCloseButton,
 } from '@chakra-ui/react'
-
+import { HamburgerIcon } from '@chakra-ui/icons'
 import { Divider } from '@chakra-ui/react'
-const Links = [ 'Home', 'Team', 'About','Reviews' , 'Contact' ,'Formations']
 
-
+const Links = ['Home', 'Team', 'About', 'Reviews', 'Contact', 'Formations']
 
 export default function NavBar() {
-
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
         <>
-
-            <Box  top={0} left={0} right={0} zIndex={1000} alignItems={'center'}>
-                <Flex justifyContent="center"   color='grey' fontSize='12px' fontWeight='bold'
-                      alignItems="center" p='0px 10px 0px 10px'>
-
-                    
-                    <svg width="90" height="74"   viewBox="0 0 98 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Box top={0} left={0} right={0} zIndex={1000} alignItems={'center'}>
+                <Flex  justifyContent={{ base: 'space-between', md: 'center' }} color='grey' fontSize='12px' fontWeight='bold' alignItems="center"
+                      p='0px 10px 0px 10px'>
+        
+                    <IconButton
+                        bg='transparent'
+                        display={{base: 'flex', md: 'none'}}
+                        aria-label="Open Menu"
+                        icon={<HamburgerIcon/>}
+                        onClick={onOpen}
+                 
+                    />
+                    <svg width="90" height="74" viewBox="0 0 98 74" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_3_378)">
                             <path
                                 d="M15.2496 29.9353C15.2453 29.9118 15.2239 29.8947 15.1993 29.8947C10.2558 29.8947 5.31224 29.8947 0.369804 29.8936C-0.0781451 29.8936 -0.207814 29.0921 0.502688 29.0931C5.3326 29.0931 10.155 29.0931 14.9699 29.0931C15.0471 29.0931 15.1092 29.0311 15.1092 28.9531C15.1092 28.9467 15.1092 28.9403 15.1082 28.9339C14.9196 27.6449 14.7674 26.3645 14.6527 25.0927C14.5273 23.7022 14.4384 22.8664 14.4566 21.772C14.4684 21.0805 14.9796 20.8357 15.5872 20.684C23.3084 18.7441 28.6356 11.7426 27.8276 3.72456C27.7536 2.9839 27.8308 2.32981 28.627 2.16201C42.238 -0.710872 55.7858 -0.720491 69.2703 2.13422C69.9669 2.28171 70.2701 2.73594 70.1791 3.49691C69.2178 11.5459 74.5407 18.6715 82.2683 20.6594C83.4353 20.9597 83.5875 21.2953 83.5168 22.5201C83.3925 24.694 83.1792 26.8615 82.8781 29.0215C82.8738 29.0557 82.8974 29.0878 82.9317 29.0921C82.9349 29.0921 82.9381 29.0921 82.9413 29.0921H97.5607C98.2519 29.0921 98.0858 29.8926 97.3571 29.8926C92.5058 29.8936 87.6533 29.8947 82.802 29.8936C82.7538 29.8936 82.727 29.9172 82.7195 29.9642L82.5844 30.8438C82.5802 30.8748 82.6005 30.9036 82.6316 30.9079C82.6348 30.9079 82.637 30.9079 82.6402 30.9079C87.0275 30.9079 91.4159 30.9079 95.8043 30.9068C96.1708 30.9068 96.4226 30.9859 96.4998 31.3557C96.5073 31.3931 96.503 31.4284 96.4848 31.4615C96.3658 31.6849 96.2179 31.8858 96.0401 32.0622C94.4262 33.6761 92.7672 35.3295 91.0644 37.0224C91.0194 37.0673 91.0183 37.14 91.0644 37.1849C92.7972 38.9131 94.5451 40.6573 96.309 42.4165C96.6016 42.7083 96.6798 43.2395 96.1762 43.34C95.7282 43.4297 94.9898 43.3603 94.6212 43.3603C89.4462 43.3571 84.2659 43.3571 79.0812 43.3592C79.0094 43.3592 78.9601 43.3923 78.9312 43.4575L78.5936 44.2452C78.5733 44.2922 78.5958 44.3457 78.6429 44.366C78.6547 44.3713 78.6665 44.3735 78.6794 44.3735H97.6668C97.744 44.3735 97.8158 44.4077 97.8651 44.4675C98.1716 44.8384 97.9101 45.1483 97.4889 45.1483H78.2946C78.2357 45.1483 78.1832 45.1836 78.1596 45.237C72.4992 58.0539 62.4332 68.669 49.0612 73.487C49.0269 73.4988 48.9926 73.4999 48.9572 73.4902C48.8126 73.4507 48.6357 73.3909 48.4257 73.3128C35.2541 68.3783 25.3928 57.8807 19.8009 45.1879C19.7902 45.1644 19.7677 45.1494 19.742 45.1494C13.2628 45.1494 6.82969 45.1451 0.443747 45.1355C-0.140301 45.1355 -0.0985064 44.3948 0.283 44.3948C6.62822 44.381 12.9756 44.3724 19.3272 44.3703C19.3583 44.3703 19.384 44.3446 19.384 44.3136C19.384 44.3072 19.383 44.2997 19.3808 44.2933L19.0668 43.4479C19.0508 43.4062 19.0208 43.3859 18.9768 43.3859C12.8095 43.3507 7.29265 43.3432 2.42629 43.3635C2.11659 43.3645 1.704 43.4041 1.51432 43.1294C1.36429 42.9103 1.40823 42.6827 1.64506 42.4443C3.40149 40.6873 5.1665 38.9259 6.94114 37.1603C6.97329 37.1282 6.97329 37.0769 6.94114 37.0459C5.19222 35.3134 3.44543 33.5713 1.69972 31.8207C1.24855 31.3696 1.59577 30.9165 2.15838 30.9111C6.4932 30.8652 10.8698 30.8684 15.2882 30.9207C15.3611 30.9207 15.4211 30.863 15.4211 30.7903C15.4211 30.7807 15.4211 30.7722 15.4189 30.7636L15.2496 29.9332V29.9353ZM16.5292 23.341C17.9652 43.6328 28.9603 63.7152 48.8126 71.3089C48.9272 71.3527 49.1073 71.3463 49.2016 71.3099C69.2124 63.573 80.3436 43.107 81.5021 22.5832C81.5032 22.5522 81.4892 22.533 81.4592 22.5244C73.0714 20.265 67.6307 12.744 68.0872 4.09757C68.0926 3.99817 68.0465 3.93939 67.949 3.91908C61.3648 2.58952 54.5941 1.89909 47.757 2.02841C41.7611 2.1417 35.821 2.77442 29.9355 3.92656C29.8883 3.93511 29.8551 3.97893 29.8583 4.02703C30.4188 12.7376 24.9041 20.1742 16.5517 22.5148C16.5099 22.5265 16.4895 22.5533 16.4906 22.596C16.4949 22.783 16.5077 23.0321 16.5292 23.341Z"
@@ -55,11 +67,9 @@ export default function NavBar() {
                             </clipPath>
                         </defs>
                     </svg>
-
-
                     <Divider orientation='vertical' borderColor='black'/>
 
-                    <Flex justifyContent="center"  alignItems="center">
+                    <Flex justifyContent="center" alignItems="center" display={{base: 'none', md: 'flex'}}>
                         {Links.map((link, index) => (
                             <ScrollLink
                                 to={link}
@@ -68,37 +78,58 @@ export default function NavBar() {
                                 offset={-70}
                                 duration={500}
                             >
-                            
-                            <Link
-                                href={`#${link}`}
-                                _hover={{ textStyle:'none'}}
-                               fontSize={{base: '8px', // 0px
-                                       sm: '12px', // ~480px. em is a relative unit and is dependant on the font size.
-                                       md: '15px', // ~768px
-                                       lg: '15px', // ~992px
-                                       xl: '15px', // ~1280px
-                                       '2xl': '15px', 
-                                       
-                                        }}
-                                
-                                key={link} alignSelf='center'
-
-                                  
-                                  mr={index === Links.length - 1 ? 0 : 4}
-
-                                  
-                            
-                            
-                            >
-                                {link}
-                            </Link>
+                                <Link
+                                    href={`#${link}`}
+                                    _hover={{textStyle: 'none'}}
+                                    fontSize={{
+                                        base: '8px',
+                                        sm: '12px',
+                                        md: '15px',
+                                        lg: '15px',
+                                        xl: '15px',
+                                        '2xl': '15px',
+                                    }}
+                                    key={link}
+                                    alignSelf='center'
+                                    mr={index === Links.length - 1 ? 0 : 4}
+                                >
+                                    {link}
+                                </Link>
                             </ScrollLink>
                         ))}
                     </Flex>
-                </Flex>
+                    </Flex>
+                  
+          
             </Box>
 
+            <Drawer isOpen={isOpen} placement='top' onClose={onClose}>
+                <DrawerOverlay filter='blur' backdropFilter='blur(8px)'>
+                    <DrawerContent>
+                   
+            
 
+                        <DrawerBody>
+                            <Flex justifyContent='space-between'  p='2em' >
+                                {Links.map((link) => (
+                                    <ScrollLink
+                                        to={link}
+                                        spy={true}
+                                        smooth={true}
+                                        offset={-70}
+                                        duration={500}
+                                        onClick={onClose}
+                                    >
+                                        <Link href={`#${link}`}  _hover={{textStyle: 'none'}}>{link}</Link>
+                                    </ScrollLink>
+                                ))}
+                            </Flex>
+                        </DrawerBody>
+
+
+                    </DrawerContent>
+                </DrawerOverlay>
+            </Drawer>
         </>
     )
 }

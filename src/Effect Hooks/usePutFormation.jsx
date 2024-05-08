@@ -6,7 +6,7 @@ import axios from 'axios';
 
 
 const API_BASE_URL = 'https://localhost:7131/EnabledisableFormation';
-export default async function UsePutEvent(data) {
+export default async function UsePutFormation(data) {
     
 
     

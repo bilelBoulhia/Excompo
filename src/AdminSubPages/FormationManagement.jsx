@@ -5,7 +5,7 @@ import NavBar from "@/Admin_Components/NavBar.jsx";
 import DarkLightTheme from "@/Theme/DarkLightTheme.jsx";
 import EventsTable from "@/Admin_Components/EventsTable.jsx";
 
-export default function EventManagement() {
+export default function FormationManagement() {
 
 
 

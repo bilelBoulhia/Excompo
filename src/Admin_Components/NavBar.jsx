@@ -48,11 +48,11 @@ export  default function NavBar(){
                      
                         
                            <Heading size='md'>
-                               <Link to="/Admin666/EventManagement">Event management </Link>
+                               <Link to="/Admin666/FormationManagement">Event management </Link>
                            </Heading>
 
                            <Heading size='md'>
-                               <Link to="/Admin666/EventManagement">Review management </Link>
+                               <Link to="/Admin666/FormationManagement">Review management </Link>
                            </Heading>
                            
                            

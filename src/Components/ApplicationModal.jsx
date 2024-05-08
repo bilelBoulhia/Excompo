@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import {useForm, useFormState} from 'react-hook-form';
 import { useToast } from '@chakra-ui/react'
-import {useInsertEvent} from "@/Effect Hooks/useInsertEvent.jsx";
+import {useInsertFormation} from "@/Effect Hooks/useInsertFormation.jsx";
 import {useInsertApplicants} from "@/Effect Hooks/useInsertApplicants.jsx";
 const ApplicationModal = ({ isOpen, onClose ,FormationId }) => {
     const initialRef = React.useRef(null);

@@ -32,24 +32,24 @@ export default function MainService(){
       
             <Box textAlign="center" p='0px 30px 0px 30px'>
                 <Box textAlign="center" p='0px 30px 0px 30px'>
-                    <Heading  fontSize={{base: 'sm', // 0px
-                        sm: '18px', // ~480px. em is a relative unit and is dependant on the font size.
-                        md: '25px', // ~768px
-                        lg: '20px', // ~992px
-                        xl: '20px', // ~1280px
-                        '2xl': '20px', // ~1536px
-
-                    }}   color='black' fontWeight='normal'>
+                    <Heading   fontSize={{
+                        base: '15px',
+                        sm: '20px',
+                        md: '25px',
+                        lg: '20px',
+                        xl: '20px',
+                        '2xl': '20px'
+                    }}  color='#353238'   fontWeight='normal'>
                         Main service
                     </Heading>
-                    <Heading   mt={5} fontSize={{base: 'mg', // 0px
-                        sm: '20px', // ~480px. em is a relative unit and is dependant on the font size.
-                        md: '28px', // ~768px
-                        lg: '29px', // ~992px
-                        xl: '20px', // ~1280px
-                        '2xl': '25px', // ~1536px
-
-                    }}  fontWeight='medium' color='black'>
+                    <Heading   mt={5}  fontSize={{
+                        base: '18px',
+                        sm: '22px',
+                        md: '28px',
+                        lg: '29px',
+                        xl: '20px',
+                        '2xl': '25px'
+                    }}  fontWeight='medium'  color='#353238'>
                        Choose your favorite 
                     </Heading>
 

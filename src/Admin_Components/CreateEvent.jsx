@@ -1,10 +1,9 @@
-﻿import React, { useState } from 'react';
+﻿import React, {useEffect, useRef, useState} from 'react';
 import {
     Box,
     Button,
     Input,
-    InputGroup,
-    InputLeftAddon,
+
     Flex,
     FormControl,
     FormErrorMessage,
@@ -12,9 +11,11 @@ import {
     Heading,
     useToast, useColorMode, Textarea,
 } from '@chakra-ui/react';
+
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import {useInsertEvent} from "@/Effect Hooks/useInsertEvent.jsx";
+import {useInsertFormation} from "@/Effect Hooks/useInsertFormation.jsx";
+import axios from "axios";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required('Tutor Name is required'),
@@ -26,8 +27,11 @@ const validationSchema = Yup.object().shape({
 
 const CreateEvent = () => {
     const [imagePreview, setImagePreview] = useState(null);
+    
     const toast = useToast();
 
+    const formDataRef = useRef(null);
+   
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -39,23 +43,23 @@ const CreateEvent = () => {
         
         validationSchema,
         onSubmit: async (values) => {
-            const base64Image = await new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = () => resolve(reader.result.split(',')[1]);
-                reader.onerror = () => reject(reader.error);
-                reader.readAsDataURL(values.image);
-            });
+            const formData = formDataRef.current;
+            
+            
+            const response =await axios.post("https://api.cloudinary.com/v1_1/diz4zzn5j/image/upload",formData);
+            const imageUrl = response.data.secure_url;
 
+            console.log(imageUrl);
             const data = {
                 EventName: values.Event,
                 formationDes: values.Description,
-                formationTutImage: base64Image,
+                formationTutImage:imageUrl.toString() ,
                 formationTutPosition: values.role,
                 tutorname: values.name
             };
 
-     
-            if(await useInsertEvent(data)===true){
+
+            if(await useInsertFormation(data)===true){
 
                 toast({
                     title: 'Form submitted successfully',
@@ -63,23 +67,35 @@ const CreateEvent = () => {
                     duration: 3000,
                     isClosable: true,
                 });
-                
+
             }
                
                 
             
-           
-            console.log(data);
+       
+         
             formik.resetForm();
             setImagePreview(null);
         },
     });
 
-    const handleImageChange = (event) => {
-        const file = event.currentTarget.files[0];
+    const handleImageChange =  (event) => {
+        
+        const file = event.currentTarget.files[0]; 
+        
         setImagePreview(URL.createObjectURL(file));
         formik.setFieldValue('image', file);
+
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', 'l0viw0wi');
+
+        formDataRef.current = formData;
+   
     };
+    
+    
 
     const {colorMode} = useColorMode();
     return (

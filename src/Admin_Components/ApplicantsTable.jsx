@@ -15,8 +15,8 @@ import {
     AccordionPanel,
     useToast,
 } from '@chakra-ui/react';
-import UsePutEvent from "@/Effect Hooks/usePutEvent.jsx";
-import useFetchEvents from "@/Effect Hooks/useFetchEvents.jsx";
+import UsePutFormation from "@/Effect Hooks/usePutFormation.jsx";
+import useFetchNewFormation from "@/Effect Hooks/useFetchNewFormation.jsx";
 import {
     AlertDialog,
     AlertDialogBody,

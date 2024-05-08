@@ -8,7 +8,7 @@ import { useToast } from '@chakra-ui/react'
 
 const API_BASE_URL = 'https://localhost:7131/createFormation';
 
-export async function useInsertEvent(data) {
+export async function useInsertFormation(data) {
     try {
         const formData = new FormData();
         formData.append('eventName', data.EventName );

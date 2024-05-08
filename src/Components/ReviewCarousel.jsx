@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 import { Carousel } from 'primereact/carousel';
 import { StarIcon } from '@chakra-ui/icons'
-// AnotherCarousel.jsx
+// ReviewCarousel.jsx
 import { ProductService } from '@/Services/ProductService';
 import {Avatar, Tag, Box, TagLabel, TagLeftIcon, Text, Heading} from "@chakra-ui/react";
 
 
-export default function AnotherCarousel() {
+export default function ReviewCarousel() {
     const [products, setProducts] = useState([]);
     const responsiveOptions = [
         {
@@ -69,11 +69,11 @@ export default function AnotherCarousel() {
     console.log(products)
     const productTemplate = (product) => {
         return (
-         
-             
-                
+
+
+            <div style={{ display: 'flex', justifyContent: 'center'}}>
                 <Box  bg='#F4F5F6'
-                      ml='10%'
+                
                    
                       minW='15em'
                       maxW='15em'
@@ -90,7 +90,7 @@ export default function AnotherCarousel() {
                     </Tag>
                    
                 </Box>
-         
+         </div>
         );
     };
 

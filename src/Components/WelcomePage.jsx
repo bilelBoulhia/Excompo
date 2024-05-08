@@ -15,7 +15,7 @@ export  default  function WelcomePage(){
                     <Heading 
 
 
-                             fontSize={{base: '28px', // 0px
+                             fontSize={{base: '35px', // 0px
                                  sm: '40px', // ~480px. em is a relative unit and is dependant on the font size.
                                  md: '50px', // ~768px
                                  lg: '60px', // ~992px
@@ -26,14 +26,14 @@ export  default  function WelcomePage(){
                              
                              
                              
-                             fontFamily='DM sans' fontWeight={500} color='#353238'>
+                             fontFamily='Rubik' fontWeight='bold' color='#353238'>
                         Wecolome to
 
                     </Heading>
 
-                    <Heading size='4xl' fontFamily='DM sans' fontWeight={500} color='#7D35C2'
+                    <Heading size='4xl'  fontFamily='Rubik' fontWeight='bold' color='#7D35C2'
 
-                             fontSize={{base: '28px', // 0px
+                             fontSize={{base: '35px', // 0px
                                  sm: '38px', // ~480px. em is a relative unit and is dependant on the font size.
                                  md: '48px', // ~768px
                                  lg: '58px', // ~992px
@@ -43,15 +43,15 @@ export  default  function WelcomePage(){
                              }}
                    
                    
-                   
+                   mt={2}
                     >
                         House of Ideas
 
                     </Heading>
 
-                    <Text pt='3em' fontWeight='semibold'
+                    <Text pt='3em' 
 
-                          fontSize={{base: '10px', // 0px
+                          fontSize={{base: '15px', // 0px
                               sm: '20px', // ~480px. em is a relative unit and is dependant on the font size.
                               md: '25px', // ~768px
                               lg: '25px', // ~992px
@@ -60,7 +60,7 @@ export  default  function WelcomePage(){
 
                           }}
 
-
+                          fontFamily='Rubik' fontWeight='bold' 
                           color='#353238'
                     >
                         Welcome to House of ideas, your go-to destination for courses that cater to students, professionals, and lifelong learners alike. With our diverse selection of offerings, you can explore new interests, develop valuable skills, and achieve your learning goals

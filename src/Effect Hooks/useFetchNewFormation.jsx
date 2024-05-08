@@ -1,15 +1,15 @@
 ﻿import axios from 'axios';
 
-export default async function  useFetchEvents(){
+export default async function  useFetchNewFormation(){
     try {
-        const response = await axios.get('https://localhost:7131/GetFormation');
+        const response = await axios.get('https://localhost:7131/Get3Formation');
         const data = response.data;
         const dataArray = Object.values(data);
    
 
 
         
-        const Events = dataArray.map(E => ({
+        const Formations = dataArray.map(E => ({
    
             FormationId:E.formationId,
             FormationTutPosition:E.formationTutPosition,
@@ -17,12 +17,12 @@ export default async function  useFetchEvents(){
             IsAvailable:E.isAvailable,
             FormationDes:E.formationDes,
             TutorName:E.tutorName,
-            formationTutImage: E.formationTutImage
+            FormationTutImage: E.formationTutImage
 
         }));
        
 
-            return Events;
+            return Formations;
 
 
 

@@ -7,11 +7,12 @@ import FormationCards from "@/Components/FormationCards.jsx";
 import MainService from "@/Components/MainService.jsx";
 import VisitUs from "@/Components/VisitUs.jsx";
 import Whyus from "@/Components/Whyus.jsx";
-import AnotherCarousel from "@/Components/AnotherCarousel.jsx";
+import ReviewCarousel from "@/Components/ReviewCarousel.jsx";
 import GetInTouch from "@/Components/GetInTouche.jsx";
 import GroupPictures from "@/Components/GroupPictures.jsx";
 import Footer from "@/Components/Footer.jsx";
-import EventsCarousel from "@/Components/EventsCarousel.jsx";
+import FormationCarousel from "@/Components/FormationCarousel.jsx";
+import BringbackToTop from "@/Components/BringbackToTop.jsx";
 export  default function LandingPage(){
     
     
@@ -52,24 +53,16 @@ export  default function LandingPage(){
                 </motion.div>
 
 
-                {/*<motion.div*/}
-                {/*    id="Formations"*/}
-                {/*    initial={{x: 100, opacity: 0}}*/}
-                
-                {/*    animate={{x: 0, opacity: 1}}*/}
-                {/*    transition={{duration: 0.8, delay: 0.4}}*/}
-                {/*>*/}
-                {/*    <FormationCards/>*/}
-                {/*</motion.div>*/}
                 <motion.div
                     id="Formations"
                     initial={{x: 100, opacity: 0}}
-                
+
                     animate={{x: 0, opacity: 1}}
                     transition={{duration: 0.8, delay: 0.4}}
                 >
-                    <EventsCarousel/>
+                    <FormationCarousel/>
                 </motion.div>
+
 
                 <motion.div
 
@@ -98,7 +91,7 @@ export  default function LandingPage(){
                     animate={{x: 0, opacity: 1}}
                     transition={{duration: 0.8, delay: 0.4}}
                 >
-                    <AnotherCarousel/>
+                    <ReviewCarousel/>
                 </motion.div>
                 <motion.div
                     initial={{x: 100, opacity: 0}}
@@ -108,6 +101,15 @@ export  default function LandingPage(){
                 >
                     <GetInTouch/>
                 </motion.div>
+                <motion.div
+                    initial={{x: 100, opacity: 0}}
+
+                    animate={{x: 0, opacity: 1}}
+                    transition={{duration: 0.8, delay: 0.4}}
+                >
+                    <BringbackToTop/>
+                </motion.div>
+
                 <motion.div
                     initial={{x: 100, opacity: 0}}
 
@@ -126,6 +128,7 @@ export  default function LandingPage(){
                 >
                     <Footer/>
                 </motion.div>
+
 
             </Stack>
 

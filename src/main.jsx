@@ -6,7 +6,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import {BrowserRouter, createBrowserRouter, RouterProvider} from "react-router-dom";
 import AdminPage from "@/Pages/AdminPage.jsx";
 import SubmissionManagement from "@/AdminSubPages/SubmissionManagement.jsx";
-import EventManagement from "@/AdminSubPages/EventManagement.jsx";
+import FormationManagement from "@/AdminSubPages/FormationManagement.jsx";
 
 
 const router = createBrowserRouter([
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
     },
     {
 
-        path: '/Admin666/EventManagement',
-        element: <EventManagement/>
+        path: '/Admin666/FormationManagement',
+        element: <FormationManagement/>
     },
    
 ]);

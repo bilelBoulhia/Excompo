@@ -12,7 +12,7 @@
     Stack,
     Text
 } from "@chakra-ui/react";
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
 
     CardFooter,
@@ -23,41 +23,25 @@ import beardude from '@/assets/breaddude.png'
 import woman from '@/assets/woman.png'
 import ApplicationModal from "@/Components/ApplicationModal.jsx";
 import MoreEventsDrawer from "@/Components/MoreEventsDrawer.jsx";
+import useFetchNewFormation from "@/Effect Hooks/useFetchNewFormation.jsx";
 export  default function FormationCards() {
     
-   const FCard = [
+   // 
 
-       {
-           Event:'drama',
-           JobTitle: 'PROJECT MANAGEMENT',
-           img: woman,
-           name:'Maya Ait Aissi'
-           
-       },
-       {
-           Event:'acting',
-           JobTitle: 'PUBLIC SPEAKING',
-           img: beardude,
-           name:'Toufik KOURtAA'
-
-       },
-
-       {
-          Event:'Dancing',
-            JobTitle: 'MARKETING DIGITAL',
-           img: balddude, 
-           name:'Youcef Boukhalfa'
-
-       }
-        
-    ]
+    const [FCard, setFCard] = useState([]);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
-
+    useEffect(() => {
+        const fetchEvents = async () => {
+            const fetchedEvents = await useFetchNewFormation()
+            setFCard(fetchedEvents);
+        };
+        fetchEvents();
+    }, []);
    
     
     
@@ -103,7 +87,7 @@ export  default function FormationCards() {
                                 
                                 bgColor="#eae1f3"  borderTopRadius="20px" h="273px" position="relative">
                                 <Image
-                                    src={card.img}
+                                    src={card.FormationTutImage}
                                     alt="Project Image"
                                     boxSize="250px"
                                     position="absolute"
@@ -130,7 +114,7 @@ export  default function FormationCards() {
                                         color="#7D35C2"
                                         letterSpacing="-0.01em"
                                     >
-                                        {card.JobTitle}
+                                        {card.FormationTutPosition}
                                     </Heading>
                                 </Flex>
                               
@@ -138,7 +122,7 @@ export  default function FormationCards() {
                             <CardBody>
                                 <Stack spacing="4" textAlign='left'>
                                     <Heading size="md" fontWeight="bold" textTransform="uppercase" color="purple.600">
-                                       {card.Event}
+                                        {card.eventname}
                                     </Heading>
                                     <Text fontSize="sm" color="gray.600">
                                         Et blandit non sit ac egestas risus non.
@@ -151,7 +135,7 @@ export  default function FormationCards() {
                                 <ApplicationModal
                                     isOpen={isModalOpen}
                                     onClose={closeModal}
-                                    Formation={card.Event}
+                                    FormationId={card.FormationId}
                                 />
                             </CardFooter>
                         </Card>

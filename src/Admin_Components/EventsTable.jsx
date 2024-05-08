@@ -15,8 +15,8 @@ import {
     AccordionPanel,
     useToast,
 } from '@chakra-ui/react';
-import UsePutEvent from "@/Effect Hooks/usePutEvent.jsx";
-import useFetchEvents from "@/Effect Hooks/useFetchEvents.jsx";
+import UsePutFormation from "@/Effect Hooks/usePutFormation.jsx";
+import useFetchNewFormation from "@/Effect Hooks/useFetchNewFormation.jsx";
 import {
     AlertDialog,
     AlertDialogBody,
@@ -36,7 +36,7 @@ export default function EventsTable(){
     const toast = useToast()
     const fetchdata = async () => {
         try {
-            const d = await useFetchEvents();
+            const d = await useFetchNewFormation();
             setdata(d);
             setIsDataUpdated(false);
         } catch (error) {
@@ -58,7 +58,7 @@ export default function EventsTable(){
             Decision:decision
 
         }
-        await  UsePutEvent(data)
+        await  UsePutFormation(data)
         setIsDataUpdated(true);
 
         toast({
