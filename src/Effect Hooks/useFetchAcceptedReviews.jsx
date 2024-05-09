@@ -2,7 +2,7 @@
 
 export default async function  UseFetchAcceptedReviews(){
     try {
-        const response = await axios.get('https://localhost:44322/GetAccptedReviews');
+        const response = await axios.get('http://bilelboulahia-001-site1.btempurl.com/GetAccptedReviews');
         const data = response.data;
         const dataArray = Object.values(data);
 

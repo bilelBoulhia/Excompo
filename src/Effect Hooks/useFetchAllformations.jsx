@@ -2,7 +2,7 @@
 
 export default async function  useFetchAllFormation(){
     try {
-        const response = await axios.get('https://localhost:44322/GetFormation');
+        const response = await axios.get('http://bilelboulahia-001-site1.btempurl.com/GetFormation');
         const data = response.data;
         const dataArray = Object.values(data);
 
