@@ -1,16 +1,16 @@
 ﻿import axios from 'axios';
 
-export default async function  useFetchNewFormation(){
+export default async function  useFetchAllFormation(){
     try {
-        const response = await axios.get('https://localhost:44322/Get3Formation');
+        const response = await axios.get('https://localhost:44322/GetFormation');
         const data = response.data;
         const dataArray = Object.values(data);
-   
 
 
-        
+
+
         const Formations = dataArray.map(E => ({
-   
+
             FormationId:E.formationId,
             FormationTutPosition:E.formationTutPosition,
             eventname:E.eventName,
@@ -20,9 +20,9 @@ export default async function  useFetchNewFormation(){
             FormationTutImage: E.formationTutImage
 
         }));
-       
 
-            return Formations;
+
+        return Formations;
 
 
 

@@ -6,16 +6,16 @@ import { useToast } from '@chakra-ui/react'
 
 
 
-const API_BASE_URL = 'https://localhost:44322/SubmitApplicant';
 
-export async function useInsertApplicants(data) {
+const API_BASE_URL = 'https://localhost:44322/postReview';
+
+export async function useInsertReview(data) {
     try {
         const formData = new FormData();
-        formData.append('Email', data.Email);
-        formData.append('Nom',data.Nom  );
-        formData.append('Prenom', data.Prenom );
-        formData.append('NumeroPhone', data.NumeroPhone );
-        formData.append('AssoEvent' , data.AssoEvent)
+        formData.append('reviewId', data.ReviewId );
+        formData.append('review',data.Review1  );
+        formData.append('reviewer',data.Reviewer  );
+
 
 
         await axios.post(API_BASE_URL, formData);

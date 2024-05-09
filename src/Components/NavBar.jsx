@@ -21,7 +21,7 @@ import {
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { Divider } from '@chakra-ui/react'
 
-const Links = ['Home', 'Team', 'About', 'Reviews', 'Contact', 'Formations']
+const Links = ['Home', 'Team','Events',  'Reviews', 'Contact', 'Formations']
 
 export default function NavBar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -104,13 +104,13 @@ export default function NavBar() {
             </Box>
 
             <Drawer isOpen={isOpen} placement='top' onClose={onClose}>
-                <DrawerOverlay filter='blur' backdropFilter='blur(8px)'>
+                <DrawerOverlay filter='blur' backdropFilter='blur(1px)'>
                     <DrawerContent>
                    
             
 
-                        <DrawerBody>
-                            <Flex justifyContent='space-between'  p='2em' >
+                        <DrawerBody  >
+                            <Stack  p='1em' >
                                 {Links.map((link) => (
                                     <ScrollLink
                                         to={link}
@@ -123,7 +123,7 @@ export default function NavBar() {
                                         <Link href={`#${link}`}  _hover={{textStyle: 'none'}}>{link}</Link>
                                     </ScrollLink>
                                 ))}
-                            </Flex>
+                            </Stack>
                         </DrawerBody>
 
 

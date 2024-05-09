@@ -16,24 +16,44 @@ import { useForm } from "react-hook-form"; // Import useForm from react-hook-for
 import { useRef, useState } from "react";
 import play from "@/assets/play.png";
 import pause from "@/assets/pause.png";
+import {useInsertApplicants} from "@/Effect Hooks/useInsertApplicants.jsx";
+import {useInsertReview} from "@/Effect Hooks/useInsertReview.jsx";
 
 export default function GetInTouch() {
     const toast = useToast()
     const {
         handleSubmit,
         register,
+        reset ,
         formState: { errors, isSubmitting },
     } = useForm(); // Initialize the useForm hook
 
-    const onSubmit = (data) => {
-        toast({
-            title: 'Submitted',
-            description: "We will contact you soon",
-            status: 'success',
-            duration: 2000,
-            isClosable: true,
-        })
-        console.log(data);
+    const onSubmit = async () => {
+       
+        const data = {
+            
+           
+            Review1:event.target.review.value,
+            Reviewer:event.target.name.value,
+            
+        }
+
+
+        if(await useInsertReview(data)===true){
+
+            toast({
+                title: 'Form submitted successfully',
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+            });
+
+
+            console.log(data)
+        }
+
+        reset();
+ 
     };
 
     return (

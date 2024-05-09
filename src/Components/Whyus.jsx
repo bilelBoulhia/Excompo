@@ -42,7 +42,7 @@ export  default function Whyus() {
                
 
                 h='30em'
-                w='75%'
+                w='90%'
               
                 boxShadow="0px 5.36px 16.08px 0px rgba(0, 0, 0, 0.2)"
                 borderRadius='15'

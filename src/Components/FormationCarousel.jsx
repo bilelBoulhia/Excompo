@@ -19,7 +19,9 @@ import { Carousel } from 'primereact/carousel';
 import { StarIcon } from '@chakra-ui/icons';
 import useFetchNewFormation from "@/Effect Hooks/useFetchNewFormation.jsx";
 import ApplicationModal from "@/Components/ApplicationModal.jsx";
-import MoreEventsDrawer from "@/Components/MoreEventsDrawer.jsx";
+import MoreFormationsDrawer from "@/Components/MoreFormationsDrawer.jsx";
+import SeemoreFormations from "@/sub pages/seemoreFormations.jsx";
+import {Link} from "react-router-dom";
 
 export default function FormationCarousel() {
     const [events, setEvents] = useState([]);
@@ -230,9 +232,12 @@ export default function FormationCarousel() {
               />
 
 
-
-                <MoreEventsDrawer></MoreEventsDrawer>
-               
+                <Link to="/seemoreFormations">
+                    <Button mt={5} w='10em' display='block' ml='auto' mr='auto' borderRadius='17px' bg='#3CAC2A' color='white'>
+                        see more
+                    </Button>
+                </Link>
+        
             </Box>
 
 

@@ -52,7 +52,7 @@ export  default function NavBar(){
                            </Heading>
 
                            <Heading size='md'>
-                               <Link to="/Admin666/FormationManagement">Review management </Link>
+                               <Link to="/Admin666/ReviewManagement">Review management </Link>
                            </Heading>
                            
                            

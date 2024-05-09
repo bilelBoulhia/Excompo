@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 
-const API_BASE_URL = 'https://localhost:7131/activeApplicant';
+const API_BASE_URL = 'https://localhost:44322/activeApplicant';
 export default async function usePutApplicant(data) {
 
 

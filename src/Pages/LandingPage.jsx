@@ -8,7 +8,7 @@ import MainService from "@/Components/MainService.jsx";
 import VisitUs from "@/Components/VisitUs.jsx";
 import Whyus from "@/Components/Whyus.jsx";
 import ReviewCarousel from "@/Components/ReviewCarousel.jsx";
-import GetInTouch from "@/Components/GetInTouche.jsx";
+import GetInTouch from "@/Components/AddReview.jsx";
 import GroupPictures from "@/Components/GroupPictures.jsx";
 import Footer from "@/Components/Footer.jsx";
 import FormationCarousel from "@/Components/FormationCarousel.jsx";
@@ -43,7 +43,7 @@ export  default function LandingPage(){
 
 
                 <motion.div
-                    id="About Us"
+                    id="Events"
                     initial={{x: 100, opacity: 0}}
 
                     animate={{x: 0, opacity: 1}}

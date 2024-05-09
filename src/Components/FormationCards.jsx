@@ -22,7 +22,7 @@ import balddude from '@/assets/balddude.png'
 import beardude from '@/assets/breaddude.png'
 import woman from '@/assets/woman.png'
 import ApplicationModal from "@/Components/ApplicationModal.jsx";
-import MoreEventsDrawer from "@/Components/MoreEventsDrawer.jsx";
+import MoreFormationsDrawer from "@/Components/MoreFormationsDrawer.jsx";
 import useFetchNewFormation from "@/Effect Hooks/useFetchNewFormation.jsx";
 export  default function FormationCards() {
     
@@ -143,7 +143,7 @@ export  default function FormationCards() {
 
                
                 </Stack>
-               <MoreEventsDrawer></MoreEventsDrawer>
+               <MoreFormationsDrawer></MoreFormationsDrawer>
             </Box>
         </Box>
         

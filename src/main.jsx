@@ -7,6 +7,8 @@ import {BrowserRouter, createBrowserRouter, RouterProvider} from "react-router-d
 import AdminPage from "@/Pages/AdminPage.jsx";
 import SubmissionManagement from "@/AdminSubPages/SubmissionManagement.jsx";
 import FormationManagement from "@/AdminSubPages/FormationManagement.jsx";
+import SeemoreFormations from "@/sub pages/seemoreFormations.jsx";
+import ReviewManagement from "@/AdminSubPages/ReviewManagement.jsx";
 
 
 const router = createBrowserRouter([
@@ -30,6 +32,16 @@ const router = createBrowserRouter([
 
         path: '/Admin666/FormationManagement',
         element: <FormationManagement/>
+    },
+    {
+
+        path: '/Admin666/ReviewManagement',
+        element: <ReviewManagement/>
+    },
+    {
+
+        path: '/seemoreFormations',
+        element: <SeemoreFormations/>
     },
    
 ]);

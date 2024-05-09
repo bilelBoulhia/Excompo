@@ -5,11 +5,13 @@ import { Carousel } from 'primereact/carousel';
 import { StarIcon } from '@chakra-ui/icons'
 // ReviewCarousel.jsx
 import { ProductService } from '@/Services/ProductService';
-import {Avatar, Tag, Box, TagLabel, TagLeftIcon, Text, Heading} from "@chakra-ui/react";
+import {Avatar, Tag, Box, TagLabel, TagLeftIcon, Text, Heading, useDisclosure} from "@chakra-ui/react";
+import useFetchNewFormation from "@/Effect Hooks/useFetchNewFormation.jsx";
+import UseFetchAcceptedReviews from "@/Effect Hooks/useFetchAcceptedReviews.jsx";
 
 
 export default function ReviewCarousel() {
-    const [products, setProducts] = useState([]);
+    const [reviews, setreviews] = useState([]);
     const responsiveOptions = [
         {
             breakpoint: '1600px',
@@ -60,14 +62,17 @@ export default function ReviewCarousel() {
         }
     ];
 
-    
 
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
     useEffect(() => {
-        ProductService.getProductsSmall().then((data) => setProducts(data.slice(0, 9)));
+        const fetchReviews = async () => {
+            const fetchedReview = await UseFetchAcceptedReviews()
+            setreviews(fetchedReview);
+        };
+        fetchReviews();
     }, []);
-
-    console.log(products)
-    const productTemplate = (product) => {
+    const ReviewTemplate = (review) => {
         return (
 
 
@@ -81,12 +86,39 @@ export default function ReviewCarousel() {
                       color='#3B5266'
                       p={4}
 
+                      
                 >
-                    <h4 className="mb-1">{product.Review}</h4>
+                    <Box
+
+                        style={{height: '11em' ,
+                            
+                            overflow:'auto'
+                    
+                    
+                    }}
+                      
+                        css={{
+                            '&::-webkit-scrollbar': {
+                                width: '4px',
+                            },
+                            '&::-webkit-scrollbar-track': {
+                                width: '6px',
+                            },
+                            '&::-webkit-scrollbar-thumb': {
+                                background: '#265073',
+                                borderRadius: '24px',
+                            },
+                        }}
+                    >
+
+                        <h4 className="mb-1">{review.Review1}</h4>
+
+                    </Box>
+
 
                     <Tag mt='3' bg='transparent' >
                         <TagLeftIcon boxSize='12px' as={StarIcon} />
-                        <TagLabel>Cyan</TagLabel>
+                        <TagLabel>{review.Reviewer}</TagLabel>
                     </Tag>
                    
                 </Box>
@@ -124,7 +156,7 @@ export default function ReviewCarousel() {
             </Heading>
                 
             </Box>
-            <Carousel style={{marginTop:'40px'}} value={products} numVisible={4} numScroll={3} responsiveOptions={responsiveOptions} itemTemplate={productTemplate}  circular
+            <Carousel style={{marginTop:'40px'}} value={reviews} numVisible={4} numScroll={3} responsiveOptions={responsiveOptions} itemTemplate={ReviewTemplate}  circular
                      
             />
         </Box>

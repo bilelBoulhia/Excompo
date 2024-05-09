@@ -5,24 +5,25 @@ import axios from 'axios';
 
 
 
-const API_BASE_URL = 'https://localhost:44322/EnabledisableFormation';
-export default async function UsePutFormation(data) {
-    
+const API_BASE_URL = 'https://localhost:44322/accpetedreview';
+export default async function usePutReview(data) {
 
-    
+
+
     try {
-        
+
         const formdata = new FormData();
 
 
-        formdata.append('formationId',data.Id);
+        formdata.append('ReviewId',data.Id);
         formdata.append('decision',data.Decision);
-        
 
-  
+
+
         await axios.put(API_BASE_URL, formdata);
 
 
+        return true
     } catch (error) {
         console.error('error:', error.message);
         if (error.response) {
@@ -30,6 +31,7 @@ export default async function UsePutFormation(data) {
             console.log('response :', error.response.data);
         }
 
+        return false
     }
 
 }
