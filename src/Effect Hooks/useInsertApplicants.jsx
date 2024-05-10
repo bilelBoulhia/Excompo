@@ -6,7 +6,7 @@ import { useToast } from '@chakra-ui/react'
 
 
 
-const API_BASE_URL = 'http://bilelboulahia-001-site1.btempurl.com/SubmitApplicant';
+const API_BASE_URL = 'https://localhost:44322/SubmitApplicant';
 
 export async function useInsertApplicants(data) {
     try {

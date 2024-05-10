@@ -30,7 +30,7 @@ export default function NavBar() {
         <>
             <Box top={0} left={0} right={0} zIndex={1000} alignItems={'center'}>
                 <Flex  justifyContent={{ base: 'space-between', md: 'center' }} color='grey' fontSize='12px' fontWeight='bold' alignItems="center"
-                      p='0px 10px 0px 10px'>
+                      p={{base:'0px 20px 0px 0px' , md:'0'}}        >
         
                     <IconButton
                         bg='transparent'

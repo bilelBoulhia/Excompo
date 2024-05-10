@@ -29,7 +29,7 @@ import {
 
 
 
-export default function EventsTable(){
+export default function FormationsTable(){
 
     const [data, setdata] = useState([]);
     const [isDataUpdated, setIsDataUpdated] = useState(false);

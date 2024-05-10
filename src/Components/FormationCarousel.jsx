@@ -89,6 +89,23 @@ export default function FormationCarousel() {
             
                 <div style={{ display: 'flex', justifyContent: 'center'}}>
                     <Card
+                        maxW={{
+                            base: '18em',
+                            sm: '22em',
+                            md: '22em',
+                            lg: '22em',
+                            xl: '23em',
+                            '2xl': '23em'
+                        }}
+                        w={{
+                            base: '18em',
+                            sm: '22em',
+                            md: '22em',
+                            lg: '22em',
+                            xl: '23em',
+                            '2xl': '23em'
+                        }}
+
                         minW={{
                             base: '18em',
                             sm: '22em',
@@ -101,7 +118,7 @@ export default function FormationCarousel() {
                         borderWidth="1px"
                         alignContent="center"
                         borderColor="gray.300"
-
+                      
                     >
                         <Box
                             bgColor="#eae1f3"
@@ -112,7 +129,7 @@ export default function FormationCarousel() {
                             <Image
                                 src={event.FormationTutImage}
                                 alt="Event Image"
-                                boxSize="250px"
+                                boxSize="16em"
                                 position="absolute"
                                 top="2em"
                                 w="100%"
@@ -129,8 +146,17 @@ export default function FormationCarousel() {
                                 py="5"
                             >
                                 <Heading
-                                    as="h3"
-                                    size="sm"
+                                  
+                                    size={{
+                                        base: '15em',
+                                        sm: '22em',
+                                        md: '22em',
+                                        lg: '22em',
+                                        xl: '23em',
+                                        '2xl': '23em'
+
+
+                                    }}
                                     fontWeight="bold"
                                     textTransform="uppercase"
                                     color="#7D35C2"
@@ -140,19 +166,51 @@ export default function FormationCarousel() {
                                 </Heading>
                             </Flex>
                         </Box>
-                        <CardBody>
-                            <Stack spacing="4" textAlign="left">
+                        <CardBody  >
+                            <Stack spacing="4" textAlign="left" h="100%"   overflow="auto">
                                 <Heading
-                                    size="md"
+                                    size={{
+                                        base: '15em',
+                                        sm: '22em',
+                                        md: '22em',
+                                        lg: '22em',
+                                        xl: '23em',
+                                        '2xl': '23em'
+                                        
+                                        
+                                    }}
                                     fontWeight="bold"
                                     textTransform="uppercase"
                                     color="purple.600"
                                 >
                                     {event.eventname}
                                 </Heading>
-                                <Text fontSize="sm" color="gray.600">
-                                    {event.FormationDes}
-                                </Text>
+                                
+                      
+                                    <Text
+
+                                        overflow="auto" // Add overflow: auto to the Text
+                                        w="100%"
+                                        h='20px'
+                                        fontSize={{
+
+                                            base: '12px',
+                                            sm: '13px',
+                                            md: '14px',
+                                            lg: '15x',
+                                            xl: '15px',
+                                            '2xl': '16px'
+
+
+
+
+
+                                        }} color="gray.600">
+                                        {event.FormationDes}
+                                    </Text>
+                                    
+                             
+                               
                             </Stack>
                         </CardBody>
                         <CardFooter justifyContent="space-between" px="8" py="4">

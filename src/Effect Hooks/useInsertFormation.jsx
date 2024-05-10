@@ -7,7 +7,7 @@ import { useToast } from '@chakra-ui/react'
 
 
 
-const API_BASE_URL = 'http://bilelboulahia-001-site1.btempurl.com/createFormation';
+const API_BASE_URL = 'https://localhost:44322/createFormation';
 
 export async function useInsertFormation(data) {
     try {

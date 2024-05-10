@@ -1,9 +1,9 @@
 ﻿import {Box, Card, CardBody, Stack, Tab, TabList, TabPanel, TabPanels, Tabs} from "@chakra-ui/react";
 import {motion} from "framer-motion";
-import CreateEvent from "@/Admin_Components/CreateEvent.jsx";
+import CreateFormation from "@/Admin_Components/CreateFormation.jsx";
 import NavBar from "@/Admin_Components/NavBar.jsx";
 import DarkLightTheme from "@/Theme/DarkLightTheme.jsx";
-import EventsTable from "@/Admin_Components/EventsTable.jsx";
+import FormationsTable from "@/Admin_Components/FormationsTable.jsx";
 
 export default function FormationManagement() {
 
@@ -40,10 +40,10 @@ export default function FormationManagement() {
                     </TabList>
                     <TabPanels>
                         <TabPanel>
-                            <CreateEvent/>
+                            <CreateFormation/>
                         </TabPanel>
                         <TabPanel>
-                            <EventsTable></EventsTable>
+                            <FormationsTable></FormationsTable>
                         </TabPanel>
                     </TabPanels>
                 </Tabs>

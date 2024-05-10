@@ -9,6 +9,8 @@ import SubmissionManagement from "@/AdminSubPages/SubmissionManagement.jsx";
 import FormationManagement from "@/AdminSubPages/FormationManagement.jsx";
 import SeemoreFormations from "@/sub pages/seemoreFormations.jsx";
 import ReviewManagement from "@/AdminSubPages/ReviewManagement.jsx";
+import EventsManagement from "@/AdminSubPages/EventsManagement..jsx";
+import SeeMoreAboutEvent from "@/sub pages/seeMoreAboutEvent.jsx";
 
 
 const router = createBrowserRouter([
@@ -27,6 +29,10 @@ const router = createBrowserRouter([
 
         path: '/Admin666/SubmissionManagement',
         element: <SubmissionManagement/>
+    },  {
+
+        path: '/Admin666/EventManagement',
+        element: <EventsManagement/>
     },
     {
 
@@ -42,6 +48,11 @@ const router = createBrowserRouter([
 
         path: '/seemoreFormations',
         element: <SeemoreFormations/>
+    }, 
+    {
+
+        path: '/seemoreAboutEvents',
+        element: <SeeMoreAboutEvent/>
     },
    
 ]);

@@ -2,7 +2,7 @@
 import WelcomePage from "@/Components/WelcomePage.jsx";
 import { motion } from 'framer-motion';
 import {Stack} from "@chakra-ui/react";
-import Carousel from "@/Components/Carousel.jsx";
+import EventCarousel from "@/Components/EventCarousel.jsx";
 import FormationCards from "@/Components/FormationCards.jsx";
 import MainService from "@/Components/MainService.jsx";
 import VisitUs from "@/Components/VisitUs.jsx";
@@ -49,7 +49,7 @@ export  default function LandingPage(){
                     animate={{x: 0, opacity: 1}}
                     transition={{duration: 0.8, delay: 0.4}}
                 >
-                    <Carousel/>
+                    <EventCarousel/>
                 </motion.div>
 
 

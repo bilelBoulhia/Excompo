@@ -5,8 +5,8 @@ import axios from 'axios';
 
 
 
-const API_BASE_URL = 'https://localhost:44322/accpetedreview';
-export default async function usePutReview(data) {
+const API_BASE_URL = 'https://localhost:44322/SubmitEventPic';
+export default async function UseInsertEventPics(data) {
 
 
 
@@ -15,15 +15,14 @@ export default async function usePutReview(data) {
         const formdata = new FormData();
 
 
-        formdata.append('ReviewId',data.Id);
-        formdata.append('decision',data.Decision);
+        formdata.append('EventId',data.Id);
+        formdata.append('eventPic',data.eventPic);
 
 
 
-        await axios.put(API_BASE_URL, formdata);
+        await axios.post(API_BASE_URL, formdata);
 
 
-        return true
     } catch (error) {
         console.error('error:', error.message);
         if (error.response) {
@@ -31,7 +30,6 @@ export default async function usePutReview(data) {
             console.log('response :', error.response.data);
         }
 
-        return false
     }
 
 }

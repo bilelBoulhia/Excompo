@@ -5,10 +5,11 @@ import { LinkBox, LinkOverlay } from '@chakra-ui/react'
 
 // Here we have used react-icons package for the icons
 import { ChevronRightIcon,ChevronLeftIcon } from '@chakra-ui/icons'
-// And react-slick as our Carousel Lib
+// And react-slick as our EventCarousel Lib
 import Slider from 'react-slick';
 import bg1 from '@/assets/bg1.png'
 import {SocialIcon} from "react-social-icons";
+import gp1 from "@/assets/gp1.png";
 // Settings for the slider
 const settings = {
     dots: true,
@@ -22,7 +23,7 @@ const settings = {
     slidesToScroll: 1,
 };
 
-export default function Carousel() {
+export default function EventCarousel() {
 
     const [slider, setSlider] = React.useState();
 
@@ -38,19 +39,28 @@ export default function Carousel() {
     ];
 
     return (
-        
-        
-        <Box
-            position={'relative'}
-         
-            width={'full'}
 
-            style={{
-                background: 'linear-gradient(109.63deg, #B4A3FF 39.55%, #DEC8FF 96.98%)'
-            }}
-            
-           >
-          
+    //     style={{
+    //     background: 'linear-gradient(109.63deg, #B4A3FF 39.55%, #DEC8FF 96.98%)'
+    // }}
+
+        <Box position="relative" width="full" padding={8}>
+            <Box
+                position="absolute"
+                top={0}
+                left={0}
+                right={0}
+                bottom={0}
+                zIndex={-1}
+                backgroundImage={cards[0].image}
+                backgroundSize="cover"
+                backgroundPosition="center"
+                backgroundRepeat="no-repeat"
+                filter="blur(15px)"
+                opacity="0.8"
+                backdropFilter="blur(10px) brightness(0.5)"
+            />
+
             <link
                 rel="stylesheet"
                 type="text/css"
@@ -65,59 +75,46 @@ export default function Carousel() {
 
             <ChevronLeftIcon
                 aria-label="left-arrow"
-
-                bg='white'
+                bg="white"
                 borderRadius="full"
                 position="absolute"
                 left={side}
                 top={top}
                 transform={'translate(0%, -50%)'}
                 zIndex={2}
-                onClick={() => slider?.slickPrev()}>
-
-            </ChevronLeftIcon>
+                onClick={() => slider?.slickPrev()}
+            />
 
             <ChevronRightIcon
                 aria-label="right-arrow"
-                bg='white'
+                bg="white"
                 borderRadius="full"
                 position="absolute"
                 right={side}
                 top={top}
                 transform={'translate(0%, -50%)'}
                 zIndex={2}
-                onClick={() => slider?.slickNext()}>
+                onClick={() => slider?.slickNext()}
+            />
 
-            </ChevronRightIcon>
             {/* Slider */}
             <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                {cards.map((cards, index) => (
-                    <Box
-                        key={index}
-                        maxH='2xl'
-                        minH='md'
-                       
-                       
-                        position="relative"
-                        backgroundRepeat="no-repeat"
-                        backgroundSize="cover"
-                        backgroundPosition="center"
-
-                        
-                        backgroundImage={cards.image}
-
-
-
-                    >
-
-                    </Box>
-
-                    
-
+                {cards.map((card, index) => (
+                    <LinkBox key={index} as="article">
+                        <LinkOverlay href='seemoreAboutEvents'>
+                            <Box
+                                maxH="2xl"
+                                minH="md"
+                                position="relative"
+                                backgroundRepeat="no-repeat"
+                                backgroundSize="cover"
+                                backgroundPosition="center"
+                                backgroundImage={card.image}
+                            />
+                        </LinkOverlay>
+                    </LinkBox>
                 ))}
             </Slider>
-
-        
         </Box>
         
  
