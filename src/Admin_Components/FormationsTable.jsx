@@ -26,6 +26,7 @@ import {
     AlertDialogOverlay,
     useDisclosure,
 } from '@chakra-ui/react';
+import useFetchAllFormation from "@/Effect Hooks/useFetchAllformations.jsx";
 
 
 
@@ -36,7 +37,7 @@ export default function FormationsTable(){
     const toast = useToast()
     const fetchdata = async () => {
         try {
-            const d = await useFetchNewFormation();
+            const d = await useFetchAllFormation();
             setdata(d);
             setIsDataUpdated(false);
         } catch (error) {

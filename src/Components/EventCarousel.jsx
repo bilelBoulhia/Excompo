@@ -100,7 +100,7 @@ export default function EventCarousel() {
             {/* Slider */}
             <Slider {...settings} ref={(slider) => setSlider(slider)}>
                 {cards.map((card, index) => (
-                    <LinkBox key={index} as="article">
+                    <LinkBox key={index} as="article" border='1px solid pink'>
                         <LinkOverlay href='seemoreAboutEvents'>
                             <Box
                                 maxH="2xl"

@@ -9,7 +9,7 @@ import {
     FormErrorMessage,
     FormLabel,
     Heading,
-    useToast, useColorMode, Textarea,
+    useToast, useColorMode, Textarea, Image, HStack, Stack,
 } from '@chakra-ui/react';
 
 import { useFormik } from 'formik';
@@ -27,9 +27,129 @@ const validationSchema = Yup.object().shape({
 });
 
 const CreateEvent = () => {
-    const [imagePreview, setImagePreview] = useState(null);
     
-    const [imagesPreview ,setImagesPreview] = useState([]);
+    const [sponsorview,setsponsorview] = useState([])
+    const [guestview,setguestview] = useState([])
+    const sponsortemplate = () => {
+
+        return (
+
+            <form onSubmit={formik.handleSubmit}>
+                <FormControl  mb={4}>
+                    <FormLabel htmlFor="name">sponsor name</FormLabel>
+                    <Input
+                   
+                        width='20em'
+                        _hover={{borderColor: 'purple'}}
+                        _focus={{borderColor: 'purple'}}
+                        
+      
+                    />
+            
+                </FormControl>
+
+
+                <FormControl  mb={6}>
+                    <FormLabel fontWeight='semibold' htmlFor="image">sponsor logo</FormLabel>
+
+                    <FormLabel htmlFor="image"
+                               py={2}
+
+                               textAlign='center'
+                               borderRadius='5px'
+                               borderColor='purple'
+                               border='1px solid purple'
+                               _hover={{borderColor: 'blue'}} w='5em'>+</FormLabel>
+                    <Flex alignItems="center">
+                        <Input
+                  
+                            style={{display: "none"}}
+
+                            type="file"
+                            
+                            mr={4}
+                        />
+                        {imagePreview &&
+                            <Box m={1} border='1px solid purple' boxSize='10em' backgroundImage={imagePreview}
+                                 backgroundSize="cover" bgRepeat="no-repeat"/>}
+                    </Flex>
+             
+                </FormControl>
+
+
+    
+            </form>
+
+        )
+
+
+    }
+
+    const Guesttemplate = () => {
+
+        return (
+
+            <form onSubmit={formik.handleSubmit}>
+                <FormControl  mb={4}>
+                    <FormLabel htmlFor="name">guest name</FormLabel>
+                    <Input
+
+                        width='20em'
+                        _hover={{borderColor: 'purple'}}
+                        _focus={{borderColor: 'purple'}}
+
+
+                    />
+
+                </FormControl>
+
+
+                <FormControl  mb={6}>
+                    <FormLabel fontWeight='semibold' htmlFor="image">guest picture</FormLabel>
+
+                    <FormLabel htmlFor="image"
+                               py={2}
+
+                               textAlign='center'
+                               borderRadius='5px'
+                               borderColor='purple'
+                               border='1px solid purple'
+                               _hover={{borderColor: 'blue'}} w='5em'>+</FormLabel>
+                    <Flex alignItems="center">
+                        <Input
+
+                            style={{display: "none"}}
+
+                            type="file"
+
+                            mr={4}
+                        />
+                        {imagePreview &&
+                            <Box m={1} border='1px solid purple' boxSize='10em' backgroundImage={imagePreview}
+                                 backgroundSize="cover" bgRepeat="no-repeat"/>}
+                    </Flex>
+
+                </FormControl>
+
+
+
+            </form>
+
+        )
+
+
+    }
+
+    const handleSponsors = (event) => {
+        setsponsorview((prevSponsors) => [...prevSponsors, prevSponsors.length]);
+    };
+    const handleGuests = (event) => {
+        setguestview((prevGuests) => [...prevGuests, prevGuests.length]);
+    };
+
+    const [imagePreview, setImagePreview] = useState(null);
+
+    const [imagesPreview, setImagesPreview] = useState([]);
 
     const toast = useToast();
 
@@ -38,12 +158,12 @@ const CreateEvent = () => {
     const formik = useFormik({
         initialValues: {
             name: '',
-          
+
             // Description: '',
             image: null,
-            
-            images:[]
-            
+
+            images: []
+
         },
 
         validationSchema,
@@ -51,20 +171,20 @@ const CreateEvent = () => {
             const formData = formDataRef.current;
 
 
-            const response =await axios.post("https://api.cloudinary.com/v1_1/diz4zzn5j/image/upload",formData);
+            const response = await axios.post("https://api.cloudinary.com/v1_1/diz4zzn5j/image/upload", formData);
             const imageUrl = response.data.secure_url;
 
             console.log(imageUrl);
             const data = {
                 EventName: values.Event,
                 formationDes: values.Description,
-                formationTutImage:imageUrl.toString() ,
+                formationTutImage: imageUrl.toString(),
                 formationTutPosition: values.role,
                 tutorname: values.name
             };
 
 
-            if(await useInsertFormation(data)===true){
+            if (await useInsertFormation(data) === true) {
 
                 toast({
                     title: 'Form submitted successfully',
@@ -76,15 +196,12 @@ const CreateEvent = () => {
             }
 
 
-
-
-
             formik.resetForm();
             setImagePreview(null);
         },
     });
 
-    const handleImageChange =  (event) => {
+    const handleImageChange = (event) => {
 
         const file = event.currentTarget.files[0];
 
@@ -100,18 +217,17 @@ const CreateEvent = () => {
 
     };
     const handleImagesChange = (event) => {
-        const files = event.currentTarget.files;
+        const selectedFiles = Array.from(event.currentTarget.files);
 
-        const imagesPreviewUrls = Array.from(files).map(file => URL.createObjectURL(file));
-        setImagesPreview(imagesPreviewUrls);
-        formik.setFieldValue('images', files);
+        const newImagesPreviewUrls = selectedFiles.map(file => URL.createObjectURL(file));
+        setImagesPreview(prevImagesPreview => [...prevImagesPreview, ...newImagesPreviewUrls]);
+        formik.setFieldValue('images', [...formik.values.images, ...selectedFiles]);
 
         const formData = new FormData();
 
-        
-        for (let i = 0; i < files.length; i++) {
-            formData.append('files', files[i]);
-        }
+        selectedFiles.forEach(file => {
+            formData.append('files', file);
+        });
 
         formData.append('upload_preset', 'l0viw0wi');
 
@@ -120,107 +236,153 @@ const CreateEvent = () => {
 
     const {colorMode} = useColorMode();
     return (
-        <Box position='absolute' left='0'  maxW="lg" mx="auto" mt={0} py={5} px={5} borderRadius='25px'  >
-            <Heading mb={6}>Create An Event</Heading>
-            <form onSubmit={formik.handleSubmit}>
-                <FormControl isInvalid={formik.errors.name && formik.touched.name} mb={4}>
-                    <FormLabel htmlFor="name">Event Name</FormLabel>
-                    <Input
-                        id="name"
-                        name="name"
-                        _hover={{borderColor:'purple' }}
-                        _focus={{borderColor:'purple' }}
-                        value={formik.values.name}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                    />
-                    <FormErrorMessage>{formik.errors.name}</FormErrorMessage>
-                </FormControl>
+        <>
+            <Stack direction={{base: 'column', xl: 'row'}}>
+                <Box w="lg" mt={0}>
+                    <Heading mb={6}>Create An Event</Heading>
+                    <form onSubmit={formik.handleSubmit}>
+                        <FormControl isInvalid={formik.errors.name && formik.touched.name} mb={4}>
+                            <FormLabel htmlFor="name">Event Name</FormLabel>
+                            <Input
+                                id="name"
+                                name="name"
+                                width='20em'
+                                _hover={{borderColor: 'purple'}}
+                                _focus={{borderColor: 'purple'}}
+                                value={formik.values.name}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                            />
+                            <FormErrorMessage>{formik.errors.name}</FormErrorMessage>
+                        </FormControl>
 
 
+                        <FormControl isInvalid={formik.errors.image && formik.touched.image} mb={6}>
+                            <FormLabel fontWeight='semibold' htmlFor="image">Event Image</FormLabel>
+
+                            <FormLabel htmlFor="image"
+                                       py={2}
+
+                                       textAlign='center'
+                                       borderRadius='5px'
+                                       borderColor='purple'
+                                       border='1px solid purple'
+                                       _hover={{borderColor: 'blue'}} w='5em'>+</FormLabel>
+                            <Flex alignItems="center">
+                                <Input
+                                    id="image"
+
+                                    name="image"
+                                    style={{ display: "none" }}
+
+                                    type="file"
+                                    onChange={handleImageChange}
+                                    onBlur={formik.handleBlur}
+                                    mr={4}
+                                />
+                                {imagePreview &&  <Box m={1} border='1px solid purple'  boxSize='10em' backgroundImage={imagePreview} backgroundSize="cover" bgRepeat="no-repeat"/> }
+                            </Flex>
+                            <FormErrorMessage>{formik.errors.image}</FormErrorMessage>
+                        </FormControl>
+
+
+                        <FormControl isInvalid={formik.errors.images && formik.touched.images} mb={6}>
+                            <FormLabel fontWeight='semibold' htmlFor="images">Related Event Images</FormLabel>
+
+                            <FormLabel htmlFor="images"
+                                       py={2}
+
+                                       textAlign='center'
+                                       borderRadius='5px'
+                                       borderColor='purple'
+                                       border='1px solid purple'
+                                       _hover={{borderColor:'blue' }} w='5em'>+</FormLabel>
+                            <Flex alignItems="center">
+                                <Input
+                                    id="images"
+                                    multiple="multiple"
+                                    name="images"
+                                    style={{ display: "none" }}
+
+                                    type="file"
+                                    onChange={handleImagesChange}
+                                    onBlur={formik.handleBlur}
+                                    mr={4}
+                                />
+                                {imagesPreview.map((previewUrl, index) => (
+                                    <Box m={1} border='1px solid purple' key={index} boxSize='10em' backgroundImage={previewUrl} backgroundSize="cover" bgRepeat="no-repeat"/>
+                                ))}
+                            </Flex>
+                            <FormErrorMessage>{formik.errors.images}</FormErrorMessage>
+                        </FormControl>
+                        <Button bg="#7450CD" color='white' type="submit" isLoading={formik.isSubmitting}>
+                            Save
+                        </Button>
+                    </form>
+                </Box>
                 
-
-               
-                {/*<FormControl isInvalid={formik.errors.Description && formik.touched.Description} mb={4}>*/}
-                {/*    <FormLabel htmlFor="Description"> Description</FormLabel>*/}
-                {/*    <Textarea*/}
-                {/*        id="Description"*/}
-                {/*        name="Description"*/}
-                {/*        type="text"*/}
-                
-                {/*        value={formik.values.Description}*/}
-                {/*        onChange={formik.handleChange}*/}
-                {/*        onBlur={formik.handleBlur}*/}
-                {/*        _hover={{borderColor:'purple' }}*/}
-                {/*        _focus={{borderColor:'purple' }}*/}
-                {/*    />*/}
-                {/*    <FormErrorMessage>{formik.errors.Description}</FormErrorMessage>*/}
-                {/*</FormControl>*/}
-
-                <FormControl isInvalid={formik.errors.image && formik.touched.image} mb={6}>
-                    <FormLabel fontWeight='semibold' htmlFor="image">Event Image</FormLabel>
-
-                    <FormLabel htmlFor="image"
-                               py={2}
-
-                               textAlign='center'
-                               borderRadius='5px'
-                               borderColor='purple'
-                               border='1px solid purple'
-                               _hover={{borderColor:'blue' }} w='5em'>+</FormLabel>
-                    <Flex alignItems="center">
-                        <Input
-                            id="image"
-
-                            name="image"
-                            style={{ display: "none" }}
-
-                            type="file"
-                            onChange={handleImageChange}
-                            onBlur={formik.handleBlur}
-                            mr={4}
-                        />
-                        {imagePreview && <Box boxSize='10em'> <img src={imagePreview} alt="Preview"  /> </Box>}
-                    </Flex>
-                    <FormErrorMessage>{formik.errors.image}</FormErrorMessage>
-                </FormControl>
                 
                 
-                <FormControl isInvalid={formik.errors.images && formik.touched.images} mb={6}>
-                    <FormLabel fontWeight='semibold' htmlFor="images">Related Event Images</FormLabel>
+                
+                <Box   w="lg"    >
+                    <Heading mb={6}>Add Sponsors </Heading>
 
-                    <FormLabel htmlFor="images"
-                               py={2}
+                    <Button onClick={handleSponsors}>+</Button>
 
-                               textAlign='center'
-                               borderRadius='5px'
-                               borderColor='purple'
-                               border='1px solid purple'
-                               _hover={{borderColor:'blue' }} w='5em'>+</FormLabel>
-                    <Flex alignItems="center">
-                        <Input
-                            id="images"
+                    {sponsorview.map((index) => (
+                        <div key={index}>{sponsortemplate()}</div>
+                    ))}
+                </Box>
 
-                            name="images"
-                            style={{ display: "none" }}
+                <Box   w="lg"    >
+                    <Heading mb={6}>Add guests </Heading>
 
-                            type="file"
-                            onChange={handleImagesChange}
-                            onBlur={formik.handleBlur}
-                            mr={4}
-                        />
-                        {imagesPreview.map((previewUrl, index) => (
-                            <Box key={index} boxSize='10em'> <img src={previewUrl} alt={`Preview ${index}`}  /> </Box>
-                        ))}
-                   </Flex>
-                    <FormErrorMessage>{formik.errors.images}</FormErrorMessage>
-                </FormControl>
-                <Button bg="#7450CD" color='white' type="submit" isLoading={formik.isSubmitting}>
-                    Save
-                </Button>
-            </form>
-        </Box>
+                    <Button onClick={handleGuests}>+</Button>
+
+                    {guestview.map((index) => (
+                        <div key={index}>{Guesttemplate()}</div>
+                    ))}
+                </Box>
+            </Stack>
+          
+          
+          
+
+        </>
+        
+   
+       
+   
     );
 };
 
 export default CreateEvent;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/*<FormControl isInvalid={formik.errors.Description && formik.touched.Description} mb={4}>*/}
+{/*    <FormLabel htmlFor="Description"> Description</FormLabel>*/}
+{/*    <Textarea*/}
+{/*        id="Description"*/}
+{/*        name="Description"*/}
+{/*        type="text"*/}
+
+{/*        value={formik.values.Description}*/}
+{/*        onChange={formik.handleChange}*/}
+{/*        onBlur={formik.handleBlur}*/}
+{/*        _hover={{borderColor:'purple' }}*/}
+{/*        _focus={{borderColor:'purple' }}*/}
+{/*    />*/}
+{/*    <FormErrorMessage>{formik.errors.Description}</FormErrorMessage>*/}
+{/*</FormControl>*/}

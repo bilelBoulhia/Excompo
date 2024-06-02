@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 
-const API_BASE_URL = 'https://localhost:44322/accpetedreview';
+const API_BASE_URL = 'http://bilelboulahia-001-site1.btempurl.com/accpetedreview';
 export default async function usePutReview(data) {
 
 

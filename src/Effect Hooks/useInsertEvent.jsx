@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 
-const API_BASE_URL = 'https://localhost:44322/SubmitEvent';
+const API_BASE_URL = 'http://bilelboulahia-001-site1.btempurl.com/SubmitEvent';
 export default async function UseInsertEvent(data) {
 
 

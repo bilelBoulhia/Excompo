@@ -7,7 +7,7 @@ import b5 from '@/assets/b5.png'
 import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react'
 import {useEffect, useState} from "react";
 import president from '@/assets/president.png'
-import RadialMenu from "@/Components/RadialMenu.jsx";
+import DepertmanetsBox from "@/Components/DepertmanetsBox.jsx";
 
 
 export default function MainService(){
@@ -103,7 +103,7 @@ export default function MainService(){
                
 
                   
-                   <RadialMenu  />
+                   <DepertmanetsBox  />
 
 
             

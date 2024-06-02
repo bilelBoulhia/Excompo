@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 
-const API_BASE_URL = 'https://localhost:44322/SubmitEventPic';
+const API_BASE_URL = 'http://bilelboulahia-001-site1.btempurl.com/SubmitEventPic';
 export default async function UseInsertEventPics(data) {
 
 
