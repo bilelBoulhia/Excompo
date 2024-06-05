@@ -1,6 +1,6 @@
 ﻿import React, { useState } from 'react';
 import p from "@/assets/president.png";
-import man from "@/assets/man.jpg";
+import man from "@/assets/d.png";
 import { Button, Text, Stack, useMediaQuery } from "@chakra-ui/react";
 
 const CombinedComponent = () => {
