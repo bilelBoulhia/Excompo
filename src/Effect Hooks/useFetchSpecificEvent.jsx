@@ -10,7 +10,7 @@ export async function useFetchSpecificEvent(Id) {
 
         //'https://localhost:44322/GetSpeficEvents?id=155897436'
 
-        const response = await axios.get(`https://localhost:44322/GetSpeficEvents?id=${Id}`);
+        const response = await axios.get(`http://bilelboulahia-001-site1.btempurl.com/GetSpeficEvents?id=${Id}`);
         
         const data = response.data;
 

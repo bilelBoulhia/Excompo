@@ -7,7 +7,7 @@ import axios from 'axios';
 
 //http://bilelboulahia-001-site1.btempurl.com
 
-const API_BASE_URL = 'https://localhost:44322/SubmitGuests';
+const API_BASE_URL = 'http://bilelboulahia-001-site1.btempurl.com/SubmitGuests';
 export default async function UseInsertGuest(data) {
 
 

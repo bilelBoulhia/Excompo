@@ -15,12 +15,14 @@ export  default  function MoreFormationsGrid(){
     useEffect(() => {
         const fetchEvents = async () => {
             const fetchedEvents = await useFetchAllFormation()
-            setFCard(fetchedEvents);
+            setFCard(fetchedEvents.$values);
         };
-        fetchEvents().then(Response => console.log(Response));
+        fetchEvents()
     }, []);
 
 
+    
+    console.log('f',FCard)
     return(
 
 <>

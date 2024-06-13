@@ -6,23 +6,13 @@ export default async function  useFetchAllFormation(){
         const data = response.data;
         const dataArray = Object.values(data);
 
+//http://bilelboulahia-001-site1.btempurl.com
 
 
-
-        const Formations = dataArray.map(E => ({
-
-            FormationId:E.formationId,
-            FormationTutPosition:E.formationTutPosition,
-            eventname:E.eventName,
-            IsAvailable:E.isAvailable,
-            FormationDes:E.formationDes,
-            TutorName:E.tutorName,
-            FormationTutImage: E.formationTutImage
-
-        }));
+   
 
 
-        return Formations;
+        return data;
 
 
 

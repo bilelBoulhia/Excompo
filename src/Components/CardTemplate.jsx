@@ -45,7 +45,7 @@ const CardTemplate = ({ card, index }) => {
                 position="relative"
             >
                 <Image
-                    src={card.FormationTutImage}
+                    src={card.formationTutImage}
                     alt="Project Image"
                    
                     position="absolute"
@@ -78,7 +78,7 @@ const CardTemplate = ({ card, index }) => {
                         letterSpacing="-0.01em"
                         p={0.5}
                     >
-                        {card.FormationTutPosition}
+                        {card.formationTutPosition}
                     </Heading>
                 </Flex>
             </Box>
@@ -106,7 +106,7 @@ const CardTemplate = ({ card, index }) => {
                         }}
                         color="gray.600"
                     >
-                        {card.FormationDes}
+                        {card.formationDes}
                     </Text>
                 </Stack>
             </CardBody>
@@ -153,7 +153,7 @@ const CardTemplate = ({ card, index }) => {
                 <ApplicationModal
                     isOpen={isModalOpen}
                     onClose={closeModal}
-                    FormationId={card.FormationId}
+                    FormationId={card.formationId}
                 />
             </CardFooter>
         </Card>

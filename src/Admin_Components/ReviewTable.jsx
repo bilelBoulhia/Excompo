@@ -30,17 +30,15 @@ import useFetchAllFormation from "@/Effect Hooks/useFetchAllformations.jsx";
 import useFetchAllReviews from "@/Effect Hooks/useFetchAllReviews.jsx";
 import usePutReview from "@/Effect Hooks/usePutReview.jsx";
 
-
-
 export default function ReviewTable(){
 
     const [data, setdata] = useState([]);
     const [isDataUpdated, setIsDataUpdated] = useState(false);
-    const toast = useToast()
+    const toast = useToast();
     const fetchdata = async () => {
         try {
             const d = await useFetchAllReviews();
-            setdata(d);
+            setdata(d.$values);
             setIsDataUpdated(false);
         } catch (error) {
             console.error("err", error);
@@ -48,113 +46,63 @@ export default function ReviewTable(){
     };
 
     useEffect(() => {
-
-        fetchdata()
-        
+        fetchdata();
     }, [isDataUpdated]);
 
-
     const handleEvent = async (id, decision) => {
-
         const data = {
+            Id: id,
+            Decision: decision
+        };
 
-            Id:id,
-            Decision:decision
-
-        }
-   
-
-        
-        if(await usePutReview(data))
-        {
-
+        if (await usePutReview(data)) {
             toast({
                 title: 'Done',
                 description: "Event Updated",
                 status: 'success',
                 duration: 2000,
                 isClosable: true,
-            })
-
-
+            });
         }
         setIsDataUpdated(true);
-    }
-    
+    };
 
-    
-   
+    console.log(data);
 
-    console.log(data)
-
-    return(
+    return (
         <>
-
-
-            {data.map((i , index )=>(
-                <Accordion key={index} allowMultiple   borderRadius='5px' >
-
-                    <AccordionItem   >
+            {data.map((i, index) => (
+                <Accordion key={index} allowMultiple borderRadius='5px'>
+                    <AccordionItem>
                         <AccordionButton>
-                            <Box  py={4} px={6} display="flex" justifyContent="space-between">
-                                <Box>{i.Reviewer}</Box>
+                            <Box py={4} px={6} display="flex" justifyContent="space-between">
+                                <Box>{i.reviewer}</Box>
                                 <AccordionIcon />
                             </Box>
                         </AccordionButton>
-                        <AccordionPanel px={6} >
-                            <TableContainer
-
-
-
-                                border='1px' borderRadius='8px' mt={2} >
+                        <AccordionPanel px={6}>
+                            <TableContainer border='1px' borderRadius='8px' mt={2}>
                                 <Table colorScheme='black'>
                                     <Tbody>
                                         <Tr>
-                                            <Td>review</Td>
-                                            <Td>{i.Review}</Td>
+                                            <Td>Review</Td>
+                                            <Td>{i.review1}</Td>
                                         </Tr>
-
                                         <Tr>
-                                            <Td>status</Td>
-                                            <Td>{i.Isaccepted.toString()}</Td>
+                                            <Td>Status</Td>
+                                            <Td>{i.isAccepted ? i.isAccepted.toString() : "undefined"}</Td>
                                         </Tr>
-
-
-
-
-
-
-
                                     </Tbody>
                                 </Table>
-
                             </TableContainer>
-
-                            <Flex py={4} alignItems="right" justifyContent="right" position="relative" flexWrap="wrap"  >
-
-                                <Button colorScheme='purple' w='6em' onClick={() => handleEvent(i.ReviewId, true)}>Allow</Button>
-                                <Button colorScheme='red'  w='6em' ml='15px' onClick={() => handleEvent(i.ReviewId, false)}>dont allow</Button>
+                            <Flex py={4} alignItems="right" justifyContent="right" position="relative" flexWrap="wrap">
+                                <Button colorScheme='purple' w='6em' onClick={() => handleEvent(i.reviewId, true)}>Allow</Button>
+                                <Button colorScheme='red' w='6em' ml='15px' onClick={() => handleEvent(i.reviewId, false)}>Don't allow</Button>
                             </Flex>
-
                         </AccordionPanel>
                     </AccordionItem>
-
                 </Accordion>
-
             ))}
-
-
-
-
-
-
-
-
         </>
-
-
-
-    )
-
-
+    );
 }

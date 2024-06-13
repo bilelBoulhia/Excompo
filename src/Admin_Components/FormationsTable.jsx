@@ -106,7 +106,7 @@ export default function FormationsTable(){
                                 </Tr>
                                 <Tr>
                                     <Td>status</Td>
-                                    <Td>{(i.IsAvailable).toString()}</Td>
+                                    <Td>{i.IsAvailable ? i.IsAvailable.toString() : "undefined"}</Td>
                                 </Tr>
                                 <Tr>
                                     <Td>descrpition</Td>

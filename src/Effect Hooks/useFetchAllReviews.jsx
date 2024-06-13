@@ -9,17 +9,10 @@ export default async function  useFetchAllReviews(){
 
 
 
-        const Reviews = dataArray.map(r => ({
-
-          ReviewId: r.reviewId,
-          Review: r.review1,
-          Reviewer: r.reviewer ,
-          Isaccepted:r.isAccepted
-
-        }));
+      
 
 
-        return Reviews;
+        return data;
 
 
 

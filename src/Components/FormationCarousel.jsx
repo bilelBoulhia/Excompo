@@ -78,11 +78,12 @@ export default function FormationCarousel() {
     useEffect(() => {
         const fetchEvents = async () => {
             const fetchedEvents = await useFetchNewFormation()
-            setEvents(fetchedEvents);
+            setEvents(fetchedEvents.$values || []);
         };
         fetchEvents();
     }, []);
 
+    console.log('e',events)
     const eventTemplate = (event) => {
         return (
             <>
@@ -127,7 +128,7 @@ export default function FormationCarousel() {
                             position="relative"
                         >
                             <Image
-                                src={event.FormationTutImage}
+                                src={event.formationTutImage}
                                 alt="Event Image"
                                 boxSize="16em"
                                 position="absolute"
@@ -162,7 +163,7 @@ export default function FormationCarousel() {
                                     color="#7D35C2"
                                     letterSpacing="-0.01em"
                                 >
-                                    {event.FormationTutPosition}
+                                    {event.formationTutPosition}
                                 </Heading>
                             </Flex>
                         </Box>
@@ -183,7 +184,7 @@ export default function FormationCarousel() {
                                     textTransform="uppercase"
                                     color="purple.600"
                                 >
-                                    {event.eventname}
+                                    {event.eventName}
                                 </Heading>
                                 
                       
@@ -206,7 +207,7 @@ export default function FormationCarousel() {
 
 
                                         }} color="gray.600">
-                                        {event.FormationDes}
+                                        {event.formationDes}
                                     </Text>
                                     
                              
@@ -227,7 +228,7 @@ export default function FormationCarousel() {
                     
                 </div>
 
-                <ApplicationModal isOpen={isOpen} onClose={onClose} FormationId={event.FormationId} />
+                <ApplicationModal isOpen={isOpen} onClose={onClose} FormationId={event.formationId} />
             </>
         );
     };

@@ -107,7 +107,7 @@ export default function ApplicantsTable(){
                                         </Tr>
                                         <Tr>
                                             <Td>status</Td>
-                                            <Td>{(i.Isactive).toString()}</Td>
+                                            <Td>{i.Isactive ? i.Isactive.toString() : "undefined"}</Td>
                                         </Tr>
                                         <Tr>
                                             <Td>numer de telephone</Td>

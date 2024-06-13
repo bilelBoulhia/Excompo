@@ -68,10 +68,12 @@ export default function ReviewCarousel() {
     useEffect(() => {
         const fetchReviews = async () => {
             const fetchedReview = await UseFetchAcceptedReviews()
-            setreviews(fetchedReview);
+            setreviews(fetchedReview.$values);
         };
         fetchReviews();
     }, []);
+    
+    console.log('reviews',reviews)
     const ReviewTemplate = (review) => {
         return (
 
@@ -111,14 +113,14 @@ export default function ReviewCarousel() {
                         }}
                     >
 
-                        <h4 className="mb-1">{review.Review1}</h4>
+                        <h4 className="mb-1">{review.review1}</h4>
 
                     </Box>
 
 
                     <Tag mt='3' bg='transparent' >
                         <TagLeftIcon boxSize='12px' as={StarIcon} />
-                        <TagLabel>{review.Reviewer}</TagLabel>
+                        <TagLabel>{review.reviewer}</TagLabel>
                     </Tag>
                    
                 </Box>

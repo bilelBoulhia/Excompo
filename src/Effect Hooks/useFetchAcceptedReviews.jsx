@@ -6,17 +6,10 @@ export default async function  UseFetchAcceptedReviews(){
         const data = response.data;
         const dataArray = Object.values(data);
 
-        const accptedReviews = dataArray.map(r => ({
-
-           ReviewId: r.reviewId, 
-            Review1:r.review1,
-            Reviewer:r.reviewer
-            
-
-        }));
+   
 
 
-        return accptedReviews;
+        return data;
 
 
 
