@@ -4,6 +4,10 @@ import DarkLightTheme from "@/Theme/DarkLightTheme.jsx";
 import CreateFormation from "@/Admin_Components/CreateFormation.jsx";
 import FormationsTable from "@/Admin_Components/FormationsTable.jsx";
 import CreateEvent from "@/Admin_Components/CreateEvent.jsx";
+import CreateEvents from "@/Admin_Components/CreateEvents.jsx";
+import SubmitEventPictures from "@/Admin_Components/SubmitEventPictures.jsx";
+import CreateSponors from "@/Admin_Components/CreateSponors.jsx";
+import CreateGuests from "@/Admin_Components/CreateGuests.jsx";
 
 export  default function EventsManagement(){
 
@@ -34,18 +38,20 @@ export  default function EventsManagement(){
                <Tabs variant='enclosed'>
                    <TabList    >
                        <Tab borderRadius='1px'>Create</Tab>
-                       <Tab borderRadius='1px'>Data Table</Tab>
+                       {/*<Tab borderRadius='1px'>Data Table</Tab>*/}
                    </TabList>
                    <TabPanels>
                        <TabPanel>
-                           //todo later
-                           <CreateEvent/>
+                           <CreateEvents/>
+                           <SubmitEventPictures/>
+                           <CreateSponors/>
+                           <CreateGuests/>
                        </TabPanel>
-                       <TabPanel>
+                       {/*<TabPanel>*/}
                        
-                           //todo later
+                       {/*    //todo later*/}
                        
-                       </TabPanel>
+                       {/*</TabPanel>*/}
                    </TabPanels>
                </Tabs>
 

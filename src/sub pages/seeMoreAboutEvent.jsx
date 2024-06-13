@@ -1,4 +1,8 @@
 ﻿import React, {useEffect, useState} from "react";
+import bg from "@/assets/312111599074.jpg"
+import bg2 from "@/assets/182.jpg"
+import bg3 from "@/assets/Abstract-form-of-fluid.png"
+
 import {
     Box, Button,
     Card,
@@ -32,7 +36,7 @@ export  default  function SeeMoreAboutEvent(){
         <>
 
 
-            <Stack spacing='5em'>
+            <Stack  >
                 <motion.div
 
                     style={{background: 'linear-gradient(109.63deg, #B4A3FF 39.55%, #DEC8FF 96.98%)'}}
@@ -61,13 +65,7 @@ export  default  function SeeMoreAboutEvent(){
                     animate={{y: 0, opacity: 1}}
                     transition={{duration: 0.8, delay: 0.2}}
 
-                    style={{
-
-                        marginTop:'25em'
-
-
-                    }}
-
+                  
 
                 >
 

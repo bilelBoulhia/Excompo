@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import React, {useEffect, useState} from 'react';
 import {Box, Grid, HStack, IconButton, Image, Text, useBreakpointValue} from '@chakra-ui/react';
 import mr from '@/assets/marines.png'
 import { LinkBox, LinkOverlay } from '@chakra-ui/react'
@@ -10,6 +10,7 @@ import Slider from 'react-slick';
 import bg1 from '@/assets/bg1.png'
 import {SocialIcon} from "react-social-icons";
 import gp1 from "@/assets/gp1.png";
+import useFetchEvents from "@/Effect Hooks/useFetchEvents.jsx";
 // Settings for the slider
 const settings = {
     dots: true,
@@ -33,10 +34,20 @@ export default function EventCarousel() {
 
     const carouselHeight = useBreakpointValue({ base: '200px', md: '400px', lg: '720px' });
 
-    const cards = [
-        {text:'E-Comexpo Event' ,image : bg1},
-        {text:'test' ,image: mr}
-    ];
+
+    const [events, setEvents] = useState([]);
+    useEffect(() => {
+        const fetchEvents = async () => {
+            const data = await useFetchEvents();
+            setEvents(data.$values || []);
+        };
+        fetchEvents();
+    }, []);
+    
+    
+    
+    console.log('dd',events)
+    
 
     return (
 
@@ -52,7 +63,7 @@ export default function EventCarousel() {
                 right={0}
                 bottom={0}
                 zIndex={-1}
-                backgroundImage={cards[0].image}
+                backgroundImage={bg1}
                 backgroundSize="cover"
                 backgroundPosition="center"
                 backgroundRepeat="no-repeat"
@@ -99,9 +110,9 @@ export default function EventCarousel() {
 
             {/* Slider */}
             <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                {cards.map((card, index) => (
+                {events.map((event, index) => (
                     <LinkBox key={index} as="article" border='1px solid pink'>
-                        <LinkOverlay href='seemoreAboutEvents'>
+                        <LinkOverlay   href={`/seemoreAboutEvents/${event.eventid}`}>
                             <Box
                                 maxH="2xl"
                                 minH="md"
@@ -109,8 +120,9 @@ export default function EventCarousel() {
                                 backgroundRepeat="no-repeat"
                                 backgroundSize="cover"
                                 backgroundPosition="center"
-                                backgroundImage={card.image}
+                                backgroundImage={event.eventpic}
                             />
+                          
                         </LinkOverlay>
                     </LinkBox>
                 ))}

@@ -1,59 +1,169 @@
-﻿import {Box, Flex, HStack, Image, Stack, Text} from '@chakra-ui/react';
-import bg1 from '@/assets/bg1.png';
+﻿import {Box, Flex, Stack, Text, Container, useBreakpointValue, Heading, Button, Image} from '@chakra-ui/react';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useFetchSpecificEvent } from '@/Effect Hooks/useFetchSpecificEvent.jsx';
 
 export default function MoreAboutEvents() {
-    // Sample array of random image URLs
-    const randomImages = [
-        'https://via.placeholder.com/150',
-        'https://via.placeholder.com/150',
-        'https://via.placeholder.com/150',
-        'https://via.placeholder.com/150',
-        'https://via.placeholder.com/150'
-    ];
+    const { eventId } = useParams();
+    const [event, setEvent] = useState({});
+    const [eventPics, setEventPics] = useState([]);
+    const [guest, setGuest] = useState([]);
+    const [sponsors, setSponsors] = useState([]);
+
+    useEffect(() => {
+        const fetchEvent = async () => {
+            const data = await useFetchSpecificEvent(eventId);
+            setEvent(data || {});
+            setEventPics(data.eventpics?.$values || []);
+            setSponsors(data.sponsors?.$values || []);
+            setGuest(data.guests?.$values || []);
+        };
+        fetchEvent();
+    }, [eventId]);
+
+    const groupSize = useBreakpointValue({ base: 1, sm: 1, md: 1, lg: 3, xl: 4 });
+    const textSize = useBreakpointValue({ base: "sm", sm: "md", md: "lg", lg: "xl" });
+    const boxSize = useBreakpointValue({ base: "250px", sm: "300px", md: "400px", lg: "250px" });
+
+    const groupImages = (images, groupSize) => {
+        const groups = [];
+        for (let i = 0; i < images.length; i += groupSize) {
+            groups.push(images.slice(i, i + groupSize));
+        }
+        return groups;
+    };
+
+    console.log(guest)
+    console.log(sponsors)
+    const groupedImages = groupImages(eventPics, groupSize);
 
     return (
         <>
             <Box
-                
-                h="500px" // Adjust the height as needed
-                backgroundImage={`url(${bg1})`}
+                width="100%"
+                h="500px"
+                position="relative"
+                backgroundImage={`url(${event.eventpic})`}
                 backgroundSize="cover"
                 backgroundPosition="center"
-                mb="4"
+                borderRadius="md"
+                boxShadow="lg"
+                mb={8}
             >
-                {/* You can add any additional styling or content for the box here */}
+                <Box
+                    position="absolute"
+                    top="0"
+                    left="0"
+                    width="100%"
+                    height="100%"
+                    backgroundColor="rgba(0, 0, 0, 0.6)"
+                    borderRadius="md"
+                    opacity={0}
+                    transition="opacity 0.3s"
+                    _hover={{ opacity: 1 }}
+                >
+                    <Container
+                        h="100%"
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                    >
+                        <Heading
+                            color="white"
+                            textAlign="center"
+                            p={5}
+                            transition="color 0.3s"
+                            _hover={{ color: "#B4A3FF" }}
+                        >
+                            {event.eventname}
+                        </Heading>
+                    </Container>
+                </Box>
             </Box>
 
-            <Flex
-                direction={["column", "column", "column", "row"]}
-                align="center"
-                justify="center"
-                wrap="nowrap"
-             
+
+                <Box
+                    mb={2}
+
+                    style={{ background: 'linear-gradient(109.63deg, #B4A3FF 39.55%, #DEC8FF 96.98%)' }}
+                    p={5}
+                >
+                    <Heading size="lg" mb={5} textAlign="center">Event Gallery</Heading>
+                    <Carousel showThumbs={false} autoPlay infiniteLoop>
+                        {groupedImages.map((group, index) => (
+                            <Flex key={index} justify="center">
+                                {group.map((image, idx) => (
+                                    <Box key={idx} p={2}>
+                                        <Box
+                                            bgImage={`url(${image.eventpicname})`}
+                                            boxSize={boxSize}
+                                            backgroundSize="cover"
+                                            backgroundPosition="center"
+                                            borderRadius="md"
+                                            boxShadow="md"
+                                        />
+                                    </Box>
+                                ))}
+                            </Flex>
+                        ))}
+                    </Carousel>
+                </Box>
+
+            <Container maxW="6xl" >
+                <Stack
+                    direction="column"
+                    align="center"
+                    p={5}
+                    minH="50vh"
+                    // boxShadow="lg"
+                    // borderRadius="md"
+                    //
+                    // backdropFilter="blur(10px)"
+                  
+                 
+                    mb={8}
+                >
+                    <Text fontSize={textSize} fontWeight="bold" mb={3}>
+                        Event Description
+                    </Text>
+                    <Text textAlign="center" px={5} >
+                        {event.eventDescription}
+                    </Text>
+                </Stack>
+            </Container>
+            
+            <Box
+                boxShadow="xl"
+                borderRadius="md"
+
+                backdropFilter="blur(10px)"
                 
-                h='100%'
-            >
-                {randomImages.map((imageUrl, index) => (
-                    <Image key={index} src={imageUrl} alt={`Random Image ${index}`} m={5}/>
-                ))}
-            </Flex>
+                style={{ background: 'linear-gradient(109.63deg, #B4A3FF 39.55%, #DEC8FF 96.98%)' }}>
+                <Box mb={8} >
+                    <Heading size="lg" mb={5} textAlign="center">Guest Speakers</Heading>
+                    <Flex wrap="wrap" justify="center">
+                        {guest.map((g, index) => (
+                            <Stack  p={5} m={2} textAlign='center'>
+                                <Image key={index}  boxShadow="lg" borderRadius="md" boxSize='100px' width='120px' src={g.guestpic}/>
+                                <Text   fontWeight="bold">{g.guestname}</Text>
+                            </Stack>
+                        ))}
+                    </Flex>
+                </Box>
 
-            <Box mb="4">
-                <Text>
-                    Breaking News: Scientists Discover New Species of Giant Squid
-
-                    In a groundbreaking discovery, marine biologists have identified a new species of giant squid lurking in the depths of the Pacific Ocean. The elusive creature, tentatively named Magnisquidus giganteus, is estimated to measure up to 30 meters in length, making it one of the largest known cephalopods.
-
-                    The discovery was made during an expedition led by a team of researchers from the Oceanic Institute of Marine Biology. Dr. Rebecca Martinez, the lead scientist on the expedition, described the moment of discovery as "truly awe-inspiring."
-
-                    "We were conducting routine deep-sea exploration when our underwater cameras captured footage of this massive creature gliding through the darkness," Dr. Martinez said in a statement. "We couldn't believe our eyes. It was unlike anything we had ever seen before."
-
-                    Initial observations suggest that Magnisquidus giganteus possesses unique anatomical features, including unusually large eyes and elongated tentacles. Scientists speculate that these adaptations may help the creature navigate the pitch-black depths of the ocean and locate prey.
-
-                    "This discovery challenges our understanding of deep-sea ecosystems and highlights the importance of continued exploration and research," said Dr. James Anderson, a marine biologist not involved in the study. "The fact that such a large and mysterious creature has evaded detection until now underscores how much we still have to learn about the world's oceans."
-
-                    The newfound giant squid has already captured the imagination of scientists and the public alike, sparking renewed interest in the study of marine biology and deep-sea exploration. Researchers are now eager to conduct further studies to learn more about this enigmatic creature and its role in the underwater ecosystem.
-                </Text>
+                <Box mb={8}>
+                    <Heading size="lg" mb={5} textAlign="center">Sponsors</Heading>
+                    <Flex wrap="wrap" justify="center">
+                        {sponsors.map((s, index) => (
+                            <Stack  p={5} m={2} textAlign='center' >
+                                <Image key={index}  boxShadow="lg" borderRadius="md" boxSize='50px' src={s.sponsorpic}/>
+                                <Text   fontWeight="bold">{s.sponsorname}</Text>
+                            </Stack>
+                        ))}
+                    </Flex>
+                </Box>
             </Box>
         </>
     );

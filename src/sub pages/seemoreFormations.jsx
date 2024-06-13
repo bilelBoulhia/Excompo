@@ -19,6 +19,7 @@ import SearchBar from "@/Components/Searchbar.jsx";
 import Footer from "@/Components/Footer.jsx";
 import {motion} from "framer-motion";
 import NavBar from "@/Components/NavBar.jsx";
+import ShowBar from "@/Components/ShowBar.jsx";
 
 
 export  default  function seemoreFormations(){
@@ -39,7 +40,7 @@ export  default  function seemoreFormations(){
                     transition={{duration: 0.8, delay: 0.2}}
                 >
                     
-                    <SearchBar/>
+                    <ShowBar/>
                     
                     
                 </motion.div>

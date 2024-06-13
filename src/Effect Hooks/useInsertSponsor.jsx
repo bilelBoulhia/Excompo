@@ -1,15 +1,14 @@
-﻿
+
 import React, { useState } from 'react';
 import axios from 'axios';
-
 
 
 //https://localhost:44322
 
 //http://bilelboulahia-001-site1.btempurl.com
 
-const API_BASE_URL = 'https://localhost:44322/SubmitEventPic';
-export default async function UseInsertEventPics(data) {
+const API_BASE_URL = 'https://localhost:44322/SubmitSP';
+export default async function UseInsertSponsor(data) {
 
 
 
@@ -18,13 +17,15 @@ export default async function UseInsertEventPics(data) {
         const formdata = new FormData();
 
 
-        formdata.append('EventId',data.EventId);
-        formdata.append('eventPic',data.eventPic);
-        
+        formdata.append('Sponsorname',data.Spname);
+        formdata.append('Sponsorpic',data.Sponsorpic);
+        formdata.append('AssoEvent',data.AssoEvent);
+
 
 
 
         await axios.post(API_BASE_URL, formdata);
+
         return true;
 
     } catch (error) {

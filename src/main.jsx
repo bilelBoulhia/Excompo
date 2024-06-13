@@ -51,7 +51,7 @@ const router = createBrowserRouter([
     }, 
     {
 
-        path: '/seemoreAboutEvents',
+        path: '/seemoreAboutEvents/:eventId',
         element: <SeeMoreAboutEvent/>
     },
    
